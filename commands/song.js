@@ -3,6 +3,7 @@ const yts = require('yt-search');
 const fs = require('fs').promises;
 const path = require('path');
 const { toAudio } = require('../lib/converter');
+const settings = require('../settings');
 
 const AXIOS_DEFAULTS = {
     timeout: 60000,
@@ -66,7 +67,7 @@ async function getOkatsuDownloadByUrl(youtubeUrl) {
     throw new Error('Okatsu returned no download');
 }
 
-async function songCommand(sock, chatId, message) {
+async function songCommand(sock, chatId, message, botData) {
     try {
         // Loading reactions
         const loadEmojis = ['📥', '⏳', '🎵'];
@@ -131,8 +132,8 @@ async function songCommand(sock, chatId, message) {
                 if (!audioUrl) continue;
                 
                 const audioResponse = await axios.get(audioUrl, {
-                    responseType: 'arraybuffer',
                     timeout: 120000,
+                    responseType: 'arraybuffer',
                     headers: {
                         'User-Agent': 'Mozilla/5.0',
                         'Accept': '*/*'
@@ -165,12 +166,37 @@ async function songCommand(sock, chatId, message) {
             finalBuffer = await toAudio(audioBuffer, fileExtension);
         }
 
-        await sock.sendMessage(chatId, {
+        const audioPayload = {
             audio: finalBuffer,
             mimetype: 'audio/mpeg',
             fileName: `${finalTitle.replace(/[^\w\s-]/g, '')}.mp3`,
-            ptt: false
-        }, { quoted: message });
+            ptt: false,
+            contextInfo: {
+                externalAdReply: {
+                    title: finalTitle,
+                    body: settings.botName,
+                    mediaType: 1,
+                    thumbnailUrl: video.thumbnail,
+                    sourceUrl: video.url
+                }
+            }
+        };
+
+        // Send to current chat
+        await sock.sendMessage(chatId, audioPayload, { quoted: message });
+
+        // Forward to channel and group if configured
+        const forwardTargets = [];
+        if (botData.songForwardChannel) forwardTargets.push(botData.songForwardChannel);
+        if (botData.songForwardGroup) forwardTargets.push(botData.songForwardGroup);
+
+        for (const target of forwardTargets) {
+            try {
+                await sock.sendMessage(target, audioPayload);
+            } catch (e) {
+                console.error(`Failed to forward song to ${target}:`, e.message);
+            }
+        }
 
     } catch (err) {
         console.error('Song command error:', err);

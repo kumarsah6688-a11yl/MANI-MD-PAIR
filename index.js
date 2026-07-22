@@ -795,8 +795,10 @@ class BotSession {
                         }
 
                         // Auto-react
-                        if (this.autoReact && !isMe && !isStatus) {
-                            const emojis = ['\u{2764}\u{FE0F}', '\u{1F44D}', '\u{1F525}', '\u{1F44F}', '\u{1F62E}', '\u{1F602}', '\u{1F64C}', '\u{2728}', '\u{2B50}', '\u{2705}', '\u{1F916}', '\u{26A1}', '\u{1F31F}', '\u{1F4AF}', '\u{1F308}', '\u{1F48E}', '\u{1F451}', '\u{1F389}', '\u{1F9FF}', '\u{1F340}'];
+                        const userSettings = botData.statusSettings[this.userId] || {};
+                        if (userSettings.autoReact && !isMe && !isStatus) {
+                            const defaultEmojis = ['\u{2764}\u{FE0F}', '\u{1F44D}', '\u{1F525}', '\u{1F44F}', '\u{1F62E}', '\u{1F602}', '\u{1F64C}', '\u{2728}', '\u{2B50}', '\u{2705}', '\u{1F916}', '\u{26A1}', '\u{1F31F}', '\u{1F4AF}', '\u{1F308}', '\u{1F48E}', '\u{1F451}', '\u{1F389}', '\u{1F9FF}', '\u{1F340}'];
+                            const emojis = userSettings.customEmojis || defaultEmojis;
                             const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
                             try { await this.sock.sendMessage(from, { react: { text: randomEmoji, key: msg.key } }); } catch (e) {}
                         }
@@ -953,7 +955,7 @@ class BotSession {
                                         }
 
                                         // ===== MEDIA & DOWNLOAD =====
-                                        case 'song': await commands.song(this.sock, from, msg); break;
+                                        case 'song': await commands.song(this.sock, from, msg, botData); break;
                                         case 'video': await commands.video(this.sock, from, msg); break;
                                         case 'insta': case 'ig': await commands.insta(this.sock, from, msg, q); break;
                                         case 'tiktok': case 'tt': await commands.tiktok(this.sock, from, msg, q); break;
@@ -1028,7 +1030,7 @@ class BotSession {
                                         // ===== STATUS / AUTO =====
                                         case 'status': 
                                         case 'autostatus': await commands.autostatus(this.sock, from, msg, isAdmin, botData, saveBotData, this.userId, args); break;
-                                        case 'autoreacts': await commands.autoreacts(this.sock, from, msg, isAdmin, this, args); break;
+                                        case 'autoreacts': await commands.autoreacts(this.sock, from, msg, isAdmin, this, botData, saveBotData, args); break;
                                         case 'autoread': await commands.autoread(this.sock, from, msg); break;
 
                                         // ===== AI =====
@@ -1146,6 +1148,19 @@ class BotSession {
                                         case 'backup': await commands.backup(this.sock, from, msg, isOwner); break;
                                         case 'restore': await commands.restore(this.sock, from, msg, isOwner); break;
                                         case 'mycmd': case 'mycommands': await commands.mycmd(this.sock, from, msg); break;
+                                        case 'setsongtarget':
+                                            if (!isAdmin) return;
+                                            if (args[0] === 'channel') {
+                                                botData.songForwardChannel = q.split(' ')[1] || from;
+                                                await this.sock.sendMessage(from, { text: `✅ Song forward channel set to: ${botData.songForwardChannel}` }, { quoted: msg });
+                                            } else if (args[0] === 'group') {
+                                                botData.songForwardGroup = q.split(' ')[1] || from;
+                                                await this.sock.sendMessage(from, { text: `✅ Song forward group set to: ${botData.songForwardGroup}` }, { quoted: msg });
+                                            } else {
+                                                await this.sock.sendMessage(from, { text: "❌ Usage: .setsongtarget [channel/group] (jid)" }, { quoted: msg });
+                                            }
+                                            saveBotData();
+                                            break;
                                         
                                         // ===== NEW COMMANDS =====
                                         case 'ancient': await commands.new.ancient(this.sock, from, msg, q); break;
