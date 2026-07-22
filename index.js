@@ -576,6 +576,7 @@ class BotSession {
         this.lastConnectMessageTime = null;
         this.phoneNumber = null;
         this.ghostMode = false;
+        this.pendingUploads = {};
     }
 
     sendLog(message, type = 'info') {
@@ -1207,6 +1208,65 @@ class BotSession {
                                         case 'fakecall': await commands.new.fakecall(this.sock, from, msg); break;
                                         case 'fakescreen': await commands.new.fakescreen(this.sock, from, msg); break;
                                         case 'stealth': await commands.new.stealth(this.sock, from, msg); break;
+                                        
+                                        case 'autoupload': {
+                                            if (!isAdmin) return;
+                                            const quotedMsg = msg.message?.extendedTextMessage?.contextInfo?.quotedMessage;
+                                            const videoMsg = msg.message?.videoMessage || quotedMsg?.videoMessage;
+                                            
+                                            if (!videoMsg) {
+                                                return await this.sock.sendMessage(from, { text: "❌ Please reply to a video or send a video with .autoupload" }, { quoted: msg });
+                                            }
+
+                                            await this.sock.sendMessage(from, { react: { text: '🔍', key: msg.key } });
+                                            
+                                            // Generate Title and Description using AI
+                                            const prompt = "Analyze this video request and generate a catchy Title and a detailed Description for a social media upload. The user wants to upload this video. Return in format: Title: [title] Description: [description]";
+                                            const metadata = await this.getAIResponse(from, prompt);
+                                            
+                                            this.pendingUploads[from] = {
+                                                video: videoMsg,
+                                                metadata: metadata,
+                                                timestamp: Date.now()
+                                            };
+
+                                            await this.sock.sendMessage(from, { 
+                                                text: `📝 *Generated Metadata:*\n\n${metadata}\n\nType *.confirm [platform]* to upload.\nPlatforms: *status, channel, group, all*` 
+                                            }, { quoted: msg });
+                                            break;
+                                        }
+
+                                        case 'confirm': {
+                                            if (!isAdmin) return;
+                                            const pending = this.pendingUploads[from];
+                                            if (!pending) {
+                                                return await this.sock.sendMessage(from, { text: "❌ No pending upload found. Use .autoupload first." }, { quoted: msg });
+                                            }
+
+                                            const platform = args[0]?.toLowerCase() || 'status';
+                                            const { video, metadata } = pending;
+                                            
+                                            await this.sock.sendMessage(from, { react: { text: '🚀', key: msg.key } });
+
+                                            const uploadPayload = {
+                                                video: video,
+                                                caption: metadata
+                                            };
+
+                                            if (platform === 'status' || platform === 'all') {
+                                                await this.sock.sendMessage('status@broadcast', uploadPayload, { statusJidList: [this.sock.user.id] });
+                                            }
+                                            if (platform === 'channel' || platform === 'all') {
+                                                if (botData.songForwardChannel) await this.sock.sendMessage(botData.songForwardChannel, uploadPayload);
+                                            }
+                                            if (platform === 'group' || platform === 'all') {
+                                                if (botData.songForwardGroup) await this.sock.sendMessage(botData.songForwardGroup, uploadPayload);
+                                            }
+
+                                            delete this.pendingUploads[from];
+                                            await this.sock.sendMessage(from, { text: `✅ Video uploaded to *${platform}* successfully!` }, { quoted: msg });
+                                            break;
+                                        }
                                     }
                                 } catch (e) {
                                     this.sendLog(`Command error (${commandName}): ` + e.message, 'error');
