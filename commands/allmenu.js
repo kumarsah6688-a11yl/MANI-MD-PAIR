@@ -1,63 +1,246 @@
 const settings = require('../settings');
 
-async function allMenu(sock, from, msg, session, commands) {
-    // ===== HEAVY BOX HEADER =====
-    let allMenuText = `┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n`;
-    allMenuText += `┃  💀  *𝐌𝐀𝐍𝐈 𝐀𝐋𝐋 𝐌𝐄𝐍𝐔 👾*  💀               ┃\n`;
-    allMenuText += `┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\n`;
-    allMenuText += `┃  📋 TOTAL COMMANDS: 300+                   ┃\n`;
-    allMenuText += `┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n\n`;
+async function allmenuCommand(sock, from, msg) {
+    const uptime = process.uptime();
+    const hours = Math.floor(uptime / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
+    const seconds = Math.floor(uptime % 60);
+    const uptimeStr = `${hours}h ${minutes}m ${seconds}s`;
+    
+    const date = new Date().toLocaleDateString();
+    const time = new Date().toLocaleTimeString();
+    
+    const menuTemplate = `╭────────────────────────────────────────────╮
+│             👾 𝗠𝗔𝗡𝗜 𝗠𝗗 𝗣𝗔𝗜𝗥 👾
+│      Premium Multi Device WhatsApp Bot
+╰────────────────────────────────────────────╯
 
-    // ===== CATEGORIES (آپ کی اوریجنل کیٹیگریز) =====
-    const categories = {
-        '👑 OWNER': ['public', 'private', 'mode', 'owner', 'setname', 'block', 'unblock', 'bcgc', 'bcall', 'restart', 'shutdown', 'xrestart', 'xshutdown', 'nuke', 'clear', 'backup', 'restore', 'clone', 'addsudo', 'delsudo', 'listsudo', 'setprefix', 'broadcast', 'self', 'autostatus', 'autoseen', 'autolike', 'autobio'],
-        '👥 GROUP': ['kick', 'add', 'promote', 'demote', 'mute', 'unmute', 'tagall', 'hidetag', 'grouplink', 'groupinfo', 'join', 'leave', 'setdesc', 'setppgc', 'getbio', 'getdp', 'accept', 'poll', 'everyonemsg', 'listonline', 'tagme', 'mention', 'kickoffline', 'snipe', 'editmsg', 'react', 'send', 'forward', 'save', 'welcome', 'goodbye', 'setwelcome', 'setgoodbye', 'antilink', 'antidelete', 'antiviewonce', 'antifake', 'antispam', 'antibug', 'anticall', 'antistatus'],
-        '🤖 AI': ['ai', 'chatbot', 'gali', 'chatgpt', 'gemini', 'llama', 'deepseek', 'flux', 'pixart', 'dalle', 'bingai', 'blackbox', 'imagine', 'midjourney', 'simi', 'brainly', 'math'],
-        '⬇️ DOWNLOAD': ['song', 'video', 'insta', 'tiktok', 'facebook', 'youtube', 'pinterest', 'twitter', 'reddit', 'spotify', 'mf', 'apk', 'gdrive', 'ytdl', 'ytmp3', 'ytmp4', 'gitclone', 'threads', 'snapchat', 'capcut', 'terabox'],
-        '🛠️ TOOLS': ['ping', 'dp', 'vv', 'translate', 'base64', 'qr', 'shorturl', 'calc', 'weather', 'github', 'ipinfo', 'tempmail', 'fakeinfo', 'binlookup', 'whois', 'dnslookup', 'portscan', 'screenshot', 'define', 'google', 'wiki', 'yts', 'playstore', 'npm', 'sticker', 'toimg', 'tomp3', 'tts', 'blur', 'invert', 'crop', 'flip', 'grayscale', 'removebg', 'enlarge', 'runtime', 'uptime', 'serverinfo', 'speedtest', 'device', 'pdf', 'ocr', 'remini', 'enhance', 'upscale', 'find', 'location', 'time', 'search'],
-        '🎉 FUN': ['joke', 'meme', 'dare', 'truth', 'ascii', 'roast', 'compliment', 'ship', 'emojimix', 'character', 'quote', 'fact', 'trivia', 'coinflip', 'roll', 'riddle', 'wouldyourather', 'hack', 'report', 'spam', 'smsbomb', 'callbomb', 'crash', 'freeze', 'lag', 'bug', 'locspam', 'vcardspam', 'buttonspam', 'pollspam', 'contactspam', 'flirt', 'insult', 'pickup', 'dare', 'truth', 'tictactoe', '8ball', 'chess', 'hangman'],
-        '🕌 ISLAMIC': ['quran', 'hadith', 'prayer', 'qibla', 'asmaulhusna', 'surah', 'ayat', 'tafsir', 'dua', 'azkar'],
-        '🎌 ANIME': ['anime', 'manga', 'waifu', 'neko', 'shinobu', 'megumin', 'bully', 'cuddle', 'cry', 'hug', 'awoo', 'kiss', 'lick', 'pat', 'smug', 'bonk', 'yeet', 'blush', 'smile', 'wave', 'highfive', 'handhold', 'nom', 'bite', 'slap', 'kill', 'happy', 'wink', 'poke', 'dance', 'cringe'],
-        '🏢 LOGO': ['neon', 'glitch', 'gold', '3dtext', 'fire', 'water', 'galaxy', 'marvel', 'avengers', 'transformer', 'blackpink', 'gradient', 'luxury', 'royal', 'metal', 'steel', 'chrome', 'glossy'],
-        '✏️ TEXT MAKER': ['𝗠𝗔𝗡𝗜👾', 'cup', 'coffee', 'cloud', 'smoke', 'flower', 'leaf', 'wood', 'stone', 'blood', 'horror', 'scary', 'spooky', 'christmas', 'birthday', 'love', 'heart'],
-        '📜 ANCIENT': ['ancient', 'hieroglyph', 'runes', 'cuneiform', 'papyrus', 'parchment', 'codex', 'fossil', 'ruins'],
-        '🌲 NATURE': ['tree', 'forest', 'ocean', 'mountain', 'sunset', 'rainbow', 'storm', 'tornado', 'tsunami', 'earth', 'moon', 'tide', 'airquality', 'uvindex', 'pollen'],
-        '✍️ CREATIVE': ['poem', 'song', 'rap', 'script', 'recipe', 'cocktail', 'perfume', 'art', 'sculpture', 'tattoo', 'mural'],
-        '🔐 PRIVACY': ['encrypt', 'decrypt', 'selfdestruct', 'burnafter', 'anonymous', 'incognito', 'fakecall', 'fakescreen', 'stealth']
-    };
+╭─〔 👤 USER INFO 〕
+│ 👤 Name      : ${msg.pushName || 'User'}
+│ 🆔 Number    : ${from.split('@')[0]}
+│ ⭐ Premium   : Free
+│ 👑 Role      : User
+│ 🌍 Mode      : Public
+│ ⚡ Prefix    : ${settings.prefix}
+│ 🕒 Runtime   : ${uptimeStr}
+│ 📅 Date      : ${date}
+│ 🕰 Time      : ${time}
+│ 💻 Version   : ${settings.version}
+│ 🤖 Commands  : 300+
+╰──────────────────────────────
 
-    // ===== BUILD LIST (Compact per category) =====
-    for (const [category, cmds] of Object.entries(categories)) {
-        // Category Header with Heavy Box
-        allMenuText += `┏━━━━━━ ❲ *${category}* ❳ ━━━━━━┓\n`;
-        
-        let line = `┃  ➤ `;
-        cmds.forEach((cmd, index) => {
-            line += `.${cmd}`;
-            if (index < cmds.length - 1) line += `, `;
-            
-            // اگر لائن بہت لمبی ہو جائے تو توڑ دو (WhatsApp کیپشن سیف رکھنے کے لیے)
-            if (line.length > 90) {
-                allMenuText += `${line}\n`;
-                line = `┃  ➤ `;
-            }
-        });
-        // باقی بچی ہوئی لائن
-        if (line !== `┃  ➤ `) allMenuText += `${line}\n`;
-        
-        allMenuText += `┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n\n`;
-    }
+╭─〔 👤 GENERAL MENU 〕
+│ ❏ .menu
+│ ❏ .help
+│ ❏ .ping
+│ ❏ .runtime
+│ ❏ .owner
+│ ❏ .script
+│ ❏ .repo
+│ ❏ .donate
+│ ❏ .rules
+│ ❏ .support
+╰──────────────────────────────
 
-    // ===== FOOTER =====
-    allMenuText += `☠️  *POWERED BY : 𝗠𝗔𝗡𝗜👾 MINI*  ☠️`;
+╭─〔 🤖 AI MENU 〕
+│ ❏ .ai
+│ ❏ .gpt
+│ ❏ .gemini
+│ ❏ .claude
+│ ❏ .imagine
+│ ❏ .translate
+│ ❏ .rewrite
+│ ❏ .summarize
+│ ❏ .explain
+│ ❏ .chat
+╰──────────────────────────────
 
-    // ===== SEND =====
-    try {
-        await sock.sendMessage(from, { image: { url: settings.startimage }, caption: allMenuText }, { quoted: msg });
-    } catch (e) {
-        // Fallback
-        await sock.sendMessage(from, { text: allMenuText }, { quoted: msg });
-    }
+╭─〔 📥 DOWNLOADER MENU 〕
+│ ❏ .play
+│ ❏ .song
+│ ❏ .ytmp3
+│ ❏ .ytmp4
+│ ❏ .spotify
+│ ❏ .tiktok
+│ ❏ .instagram
+│ ❏ .facebook
+│ ❏ .twitter
+│ ❏ .mediafire
+│ ❏ .gdrive
+│ ❏ .apk
+│ ❏ .gitclone
+│ ❏ .movie
+│ ❏ .anime
+╰──────────────────────────────
+
+╭─〔 🎵 MUSIC MENU 〕
+│ ❏ .lyrics
+│ ❏ .playlist
+│ ❏ .shazam
+│ ❏ .bass
+│ ❏ .nightcore
+│ ❏ .volume
+╰──────────────────────────────
+
+╭─〔 🎬 VIDEO MENU 〕
+│ ❏ .video
+│ ❏ .reels
+│ ❏ .story
+│ ❏ .shorts
+│ ❏ .trim
+│ ❏ .compress
+╰──────────────────────────────
+
+╭─〔 🖼 IMAGE MENU 〕
+│ ❏ .toimg
+│ ❏ .sticker
+│ ❏ .meme
+│ ❏ .removebg
+│ ❏ .enhance
+│ ❏ .upscale
+│ ❏ .wallpaper
+╰──────────────────────────────
+
+╭─〔 😂 FUN MENU 〕
+│ ❏ .joke
+│ ❏ .truth
+│ ❏ .dare
+│ ❏ .meme
+│ ❏ .fact
+│ ❏ .ship
+│ ❏ .rate
+│ ❏ .8ball
+╰──────────────────────────────
+
+╭─〔 🎮 GAME MENU 〕
+│ ❏ .ttt
+│ ❏ .casino
+│ ❏ .slot
+│ ❏ .dice
+│ ❏ .quiz
+│ ❏ .math
+│ ❏ .rps
+╰──────────────────────────────
+
+╭─〔 🔍 SEARCH MENU 〕
+│ ❏ .google
+│ ❏ .youtube
+│ ❏ .github
+│ ❏ .npm
+│ ❏ .apksearch
+│ ❏ .image
+│ ❏ .wiki
+╰──────────────────────────────
+
+╭─〔 🛠 TOOLS MENU 〕
+│ ❏ .tts
+│ ❏ .qr
+│ ❏ .shorturl
+│ ❏ .tinyurl
+│ ❏ .calc
+│ ❏ .weather
+│ ❏ .time
+│ ❏ .ip
+│ ❏ .whois
+│ ❏ .base64
+│ ❏ .binary
+│ ❏ .encode
+│ ❏ .decode
+╰──────────────────────────────
+
+╭─〔 📦 CONVERTER MENU 〕
+│ ❏ .tomp3
+│ ❏ .tovn
+│ ❏ .togif
+│ ❏ .toaudio
+│ ❏ .tosticker
+│ ❏ .tourl
+│ ❏ .tofile
+╰──────────────────────────────
+
+╭─〔 🎭 ANIME MENU 〕
+│ ❏ .waifu
+│ ❏ .neko
+│ ❏ .anime
+│ ❏ .manga
+│ ❏ .character
+│ ❏ .cosplay
+╰──────────────────────────────
+
+╭─〔 👑 GROUP MENU 〕
+│ ❏ .tagall
+│ ❏ .hidetag
+│ ❏ .kick
+│ ❏ .add
+│ ❏ .promote
+│ ❏ .demote
+│ ❏ .mute
+│ ❏ .unmute
+│ ❏ .warn
+│ ❏ .welcome
+│ ❏ .goodbye
+│ ❏ .antilink
+│ ❏ .antispam
+│ ❏ .delete
+╰──────────────────────────────
+
+╭─〔 📢 CHANNEL MENU 〕
+│ ❏ .channelinfo
+│ ❏ .follow
+│ ❏ .unfollow
+│ ❏ .forward
+│ ❏ .post
+╰──────────────────────────────
+
+╭─〔 💎 PREMIUM MENU 〕
+│ ❏ .premium
+│ ❏ .vip
+│ ❏ .claim
+│ ❏ .balance
+│ ❏ .daily
+│ ❏ .weekly
+╰──────────────────────────────
+
+╭─〔 ⚙ SETTINGS MENU 〕
+│ ❏ .prefix
+│ ❏ .mode
+│ ❏ .language
+│ ❏ .autoread
+│ ❏ .autotyping
+│ ❏ .autostatus
+╰──────────────────────────────
+
+╭─〔 👑 OWNER MENU 〕
+│ ❏ .self
+│ ❏ .public
+│ ❏ .restart
+│ ❏ .shutdown
+│ ❏ .block
+│ ❏ .unblock
+│ ❏ .ban
+│ ❏ .unban
+│ ❏ .broadcast
+│ ❏ .join
+│ ❏ .leave
+│ ❏ .getfile
+│ ❏ .setppbot
+│ ❏ .setname
+│ ❏ .setbio
+│ ❏ .update
+│ ❏ .eval
+│ ❏ .exec
+│ ❏ .shell
+╰──────────────────────────────
+
+╭────────────────────────────────────────────╮
+│      👾 Thank You For Using MANI MD 👾
+│      💻 Fast • Stable • Powerful • 300+
+╰────────────────────────────────────────────╯`;
+
+    await sock.sendMessage(from, { 
+        image: { url: settings.startimage },
+        caption: menuTemplate
+    }, { quoted: msg });
 }
 
-module.exports = allMenu;
+module.exports = allmenuCommand;

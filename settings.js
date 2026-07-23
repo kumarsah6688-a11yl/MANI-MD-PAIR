@@ -1,5 +1,6 @@
 module.exports = {
-    startimage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663848175718/RtwonGsXpgDuLQRx.jpg',
+    startimage: 'https://files.catbox.moe/m3dg3w.jpeg',
+    connectedImage: 'https://files.catbox.moe/xfeb6e.jpeg',
     ownerNumber: process.env.OWNER_NUMBER || '9779807044421',
     botName: '𝗠𝗔𝗡𝗜 👾',
     ownerName: '𝗠𝗔𝗡𝗜 ⚚',
