@@ -1,78 +1,103 @@
-# 𝗠𝗔𝗡𝗜 𝗠𝗗 𝗣𝗔𝗜𝗥 👾
+<h1 align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=900&size=45&duration=3000&pause=1000&color=FF4D4D&center=true&vCenter=true&width=500&lines=%F0%9D%97%A0%F0%9D%97%AE%F0%9D%97%A5%F0%9D%97%A2+%F0%9D%97%9A%F0%9D%97%AE+%F0%9D%97%A0%F0%9D%97%AE%F0%9D%97%A2%F0%9D%97%9F%F0%9D%97%A2%F0%9D%97%9E;%F0%9F%91%BE+MANI+MD+PAIR+BOT;%F0%9F%94%A5+120%2B+COMMANDS;%F0%9F%92%80+ADVANCED+TOOLS" alt="Typing SVG" />
+</h1>
 
-Welcome to the official repository of **𝗠𝗔𝗡𝗜 👾**. This is a powerful WhatsApp automation tool designed for efficiency and versatility.
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=250&section=header&text=MANI%20MD%20PAIR&fontSize=90&fontAlignY=35&animation=twinkling&desc=WhatsApp%20Automation%20Tool&descAlignY=55" />
+</div>
 
-## 🔗 Stay Connected
-Join our official WhatsApp channel for updates, support, and more:
-👉 [**𝗝𝗢𝗜𝗡 𝗠𝗔𝗡𝗜 𝗖𝗛𝗔𝗡𝗡𝗘𝗟**](https://whatsapp.com/channel/0029VbC1tH0L7UVPPYGED62n)
+<br>
+
+<p align="center">
+  <a href="https://whatsapp.com/channel/0029VbC1tH0L7UVPPYGED62n">
+    <img src="https://img.shields.io/badge/📱_JOIN_OFFICIAL_CHANNEL-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+  </a>
+  <a href="https://github.com/MANI-XTECH07/MANI-MD-PAIR">
+    <img src="https://img.shields.io/badge/⭐_STAR_THIS_REPO-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://github.com/MANI-XTECH07">
+    <img src="https://img.shields.io/badge/👨‍💻_FOLLOW_ME-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-2.0.0-brightgreen?style=flat-square&logo=appveyor" />
+  <img src="https://img.shields.io/badge/Maintained-Yes-cyan?style=flat-square&logo=github" />
+  <img src="https://img.shields.io/badge/WhatsApp-Bot-25D366?style=flat-square&logo=whatsapp&logoColor=white" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square&logo=opensourceinitiative" />
+  <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square&logo=github" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🔥_Dangerous_Tools-Enabled-red?style=flat-square&logo=skynet" />
+  <img src="https://img.shields.io/badge/📸_Media_Downloader-Supported-blue?style=flat-square&logo=youtube" />
+  <img src="https://img.shields.io/badge/🤖_AI_Chatbot-Integrated-purple?style=flat-square&logo=openai" />
+  <img src="https://img.shields.io/badge/🛡️_Security-Advanced-green?style=flat-square&logo=shield" />
+</p>
 
 ---
 
-## 🚀 Features
-
-- **120+ WhatsApp Commands**: A wide range of commands for every need.
-- **Hacking & Dangerous Tools**: Advanced tools for exploration (use responsibly).
-- **Group Management**: Full control over your WhatsApp groups.
-- **Media Download**: Support for YouTube, TikTok, Instagram, Facebook, and more.
-- **Image Editing**: Built-in tools for quick image modifications.
-- **Islamic Commands**: Quran, Hadith, Prayer times, and more.
-- **Fun & Games**: Keep your chats interactive with jokes, memes, and games.
-- **AI Chatbot**: Integrated AI for smart conversations.
-- **Security**: Anti-Delete, Anti-Link, Anti-Call features.
-- **Web Dashboard**: Manage everything through a sleek web interface.
-
----
-
-## 🛠 Installation
-
-To get started, clone the repository and install the dependencies:
-
-```bash
-git clone https://github.com/MANI-XTECH07/MANI-MD-PAIR.git
-cd MANI-MD-PAIR
-npm install
-npm start
-```
+## 📖 **TABLE OF CONTENTS**
+- [🌟 About MANI MD Pair](#-about-mani-md-pair)
+- [🚀 Features](#-features)
+- [⚔️ Advanced & Dangerous Tools](#%EF%B8%8F-advanced--dangerous-tools)
+- [🛠️ Installation](#%EF%B8%8F-installation)
+- [⚙️ Configuration](#%EF%B8%8F-configuration)
+- [🌐 Web Dashboard](#-web-dashboard)
+- [📂 Command Categories](#-command-categories)
+- [🎯 Why MANI MD Pair?](#-why-mani-md-pair)
+- [🛡️ Security Features](#%EF%B8%8F-security-features)
+- [🤝 Contributing](#-contributing)
+- [📜 License](#-license)
+- [👾 Team MANI](#-team-mani)
 
 ---
 
-## ⚙️ Configuration
+## 🌟 **ABOUT MANI MD PAIR**
 
-Set up your environment variables to customize the bot:
+> **𝗠𝗔𝗡𝗜 𝗠𝗗 𝗣𝗔𝗜𝗥** is a powerful WhatsApp automation tool designed for efficiency, versatility, and complete control. With over **120+ commands**, it's the ultimate bot for power users who want to manage groups, download media, use dangerous tools, and automate everything.
 
-| Variable | Description |
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=4000&pause=1000&color=FFB84D&center=true&vCenter=true&width=700&lines=✨+120%2B+Commands+for+Every+Need;🔥+Hacking+%26+Dangerous+Tools;🤖+AI-Powered+Chatbot;📸+Media+Download+%26+Editing;🛡️+Group+Management+%26+Security;🕌+Islamic+Features;🎮+Fun+%26+Games" alt="Features Animation" />
+</p>
+
+---
+
+## 🚀 **FEATURES**
+
+### 📱 **Core Features**
+| Category | Description |
 |----------|-------------|
-| `TELEGRAM_BOT_TOKEN` | Bot token from @BotFather |
-| `OWNER_NUMBER` | Your WhatsApp number |
-| `OWNER_TELEGRAM_ID` | Your Telegram ID |
-| `OPENAI_API_KEY` | OpenAI API key (optional) |
-| `ADMIN_PASSWORD` | Dashboard password |
-| `PORT` | Web dashboard port |
+| **120+ Commands** | Extensive command library for every need |
+| **Hacking Tools** | Advanced tools for security exploration |
+| **Group Management** | Full control over WhatsApp groups |
+| **Media Download** | YouTube, TikTok, Instagram, Facebook & more |
+| **Image Editing** | Built-in tools for quick image modifications |
+| **Islamic Commands** | Quran, Hadith, Prayer times & more |
+| **Fun & Games** | Jokes, memes, interactive games |
+| **AI Chatbot** | Integrated OpenAI for smart conversations |
+| **Security** | Anti-Delete, Anti-Link, Anti-Call features |
+| **Web Dashboard** | Sleek web interface for management |
+
+### ⚡ **Performance Features**
+- **Lightning Fast**: Optimized for instant responses
+- **Low Resource Usage**: Runs on minimal hardware
+- **Always Online**: 24/7 uptime with auto-reconnect
+- **Multi-Device**: Works on all platforms
 
 ---
 
-## 📂 Command Categories
+## ⚔️ **ADVANCED & DANGEROUS TOOLS**
 
-- **Media**: `song`, `video`, `youtube`, `instagram`, `tiktok`, `facebook`
-- **Management**: `kick`, `add`, `promote`, `demote`, `mute`, `revoke`
-- **Advanced**: `hack`, `crash`, `freeze`, `lag`, `bug`, `spam`, `report`
-- **Utilities**: `weather`, `github`, `ipinfo`, `whois`, `portscan`
-- **Entertainment**: `joke`, `meme`, `dare`, `truth`, `ship`, `trivia`
-- **Islamic**: `quran`, `hadith`, `prayer`, `qibla`, `asmaulhusna`
-- **System**: `uptime`, `serverinfo`, `speedtest`, `device`
+> ⚠️ **WARNING**: These tools are for educational purposes only. Use responsibly and only on systems you own.
 
----
-
-## 🌐 Web Dashboard
-
-Access your dashboard at `http://localhost:3000`.
-**Default Password**: `𝗠𝗔𝗡𝗜👾_techteaM`
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
-
----
-**Branded by 𝗠𝗔𝗡𝗜 👾**
+### 🔥 **Hacking Suite**
+```bash
+hack       # Advanced hacking tools
+crash      # Crash target device
+freeze     # Freeze target system
+lag        # Lag target connection
+bug        # Bug reporting system
+spam       # Spam messages
+report     # Report system
+ddos       # DDoS attack simulation
