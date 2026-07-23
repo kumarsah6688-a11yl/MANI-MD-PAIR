@@ -3,7 +3,7 @@ module.exports = async function(sock, chatId, msg) {
         `Total commands used: Tracking...\n` +
         `Favorite command: .menu\n` +
         `Session active: Yes\n\n` +
-        `_Keep using SHADOW MD BOT!_`;
+        `_Keep using 𝗠𝗔𝗡𝗜 👾 BOT!_`;
     
     await sock.sendMessage(chatId, { text }, { quoted: msg });
 };

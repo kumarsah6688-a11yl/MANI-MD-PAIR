@@ -26,215 +26,201 @@ async function allmenuCommand(sock, from, msg) {
 │ 📅 Date      : ${date}
 │ 🕰 Time      : ${time}
 │ 💻 Version   : ${settings.version}
-│ 🤖 Commands  : 300+
+│ 🤖 Commands  : Real & Working
 ╰──────────────────────────────
 
-╭─〔 👤 GENERAL MENU 〕
-│ ❏ .menu
-│ ❏ .help
-│ ❏ .ping
-│ ❏ .runtime
+╭─〔 👤 OWNER COMMANDS 〕
+│ ❏ .private
+│ ❏ .public
 │ ❏ .owner
-│ ❏ .script
-│ ❏ .repo
-│ ❏ .donate
-│ ❏ .rules
-│ ❏ .support
+│ ❏ .setname
+│ ❏ .block
+│ ❏ .unblock
+│ ❏ .bcgc
+│ ❏ .bcall
+│ ❏ .restart
+│ ❏ .shutdown
+│ ❏ .mode
+│ ❏ .deleteall
+│ ❏ .clone
+│ ❏ .crash
+│ ❏ .freeze
+│ ❏ .bug
+│ ❏ .nuke
 ╰──────────────────────────────
 
-╭─〔 🤖 AI MENU 〕
+╭─〔 🛡️ PROTECTION MENU 〕
+│ ❏ .antilink
+│ ❏ .anticall
+│ ❏ .antidelete
+│ ❏ .antistatus
+│ ❏ .antibug
+╰──────────────────────────────
+
+╭─〔 🤖 AI & AUTO MENU 〕
 │ ❏ .ai
-│ ❏ .gpt
-│ ❏ .gemini
-│ ❏ .claude
-│ ❏ .imagine
-│ ❏ .translate
-│ ❏ .rewrite
-│ ❏ .summarize
-│ ❏ .explain
-│ ❏ .chat
-╰──────────────────────────────
-
-╭─〔 📥 DOWNLOADER MENU 〕
-│ ❏ .play
-│ ❏ .song
-│ ❏ .ytmp3
-│ ❏ .ytmp4
-│ ❏ .spotify
-│ ❏ .tiktok
-│ ❏ .instagram
-│ ❏ .facebook
-│ ❏ .twitter
-│ ❏ .mediafire
-│ ❏ .gdrive
-│ ❏ .apk
-│ ❏ .gitclone
-│ ❏ .movie
-│ ❏ .anime
-╰──────────────────────────────
-
-╭─〔 🎵 MUSIC MENU 〕
-│ ❏ .lyrics
-│ ❏ .playlist
-│ ❏ .shazam
-│ ❏ .bass
-│ ❏ .nightcore
-│ ❏ .volume
-╰──────────────────────────────
-
-╭─〔 🎬 VIDEO MENU 〕
-│ ❏ .video
-│ ❏ .reels
-│ ❏ .story
-│ ❏ .shorts
-│ ❏ .trim
-│ ❏ .compress
-╰──────────────────────────────
-
-╭─〔 🖼 IMAGE MENU 〕
-│ ❏ .toimg
-│ ❏ .sticker
-│ ❏ .meme
-│ ❏ .removebg
-│ ❏ .enhance
-│ ❏ .upscale
-│ ❏ .wallpaper
+│ ❏ .chatbot
+│ ❏ .gali
+│ ❏ .status / .autostatus
+│ ❏ .autoreacts
+│ ❏ .autoread
 ╰──────────────────────────────
 
 ╭─〔 😂 FUN MENU 〕
 │ ❏ .joke
-│ ❏ .truth
-│ ❏ .dare
 │ ❏ .meme
-│ ❏ .fact
+│ ❏ .dare
+│ ❏ .truth
+│ ❏ .ascii
+│ ❏ .roast
+│ ❏ .compliment
 │ ❏ .ship
-│ ❏ .rate
-│ ❏ .8ball
+│ ❏ .emojimix
+│ ❏ .character
+│ ❏ .quote
+│ ❏ .fact
+│ ❏ .trivia
+│ ❏ .coinflip
+│ ❏ .roll
+│ ❏ .riddle
+│ ❏ .wyr
 ╰──────────────────────────────
 
-╭─〔 🎮 GAME MENU 〕
-│ ❏ .ttt
-│ ❏ .casino
-│ ❏ .slot
-│ ❏ .dice
-│ ❏ .quiz
-│ ❏ .math
-│ ❏ .rps
-╰──────────────────────────────
-
-╭─〔 🔍 SEARCH MENU 〕
-│ ❏ .google
-│ ❏ .youtube
-│ ❏ .github
-│ ❏ .npm
-│ ❏ .apksearch
-│ ❏ .image
-│ ❏ .wiki
-╰──────────────────────────────
-
-╭─〔 🛠 TOOLS MENU 〕
-│ ❏ .tts
+╭─〔 🛠️ TOOLS & UTILS 〕
+│ ❏ .ping
+│ ❏ .dp
+│ ❏ .vv
+│ ❏ .translate
+│ ❏ .base64
 │ ❏ .qr
 │ ❏ .shorturl
-│ ❏ .tinyurl
 │ ❏ .calc
 │ ❏ .weather
-│ ❏ .time
-│ ❏ .ip
+│ ❏ .github
+│ ❏ .ipinfo
+│ ❏ .tempmail
+│ ❏ .fakeinfo
+│ ❏ .binlookup
 │ ❏ .whois
-│ ❏ .base64
-│ ❏ .binary
-│ ❏ .encode
-│ ❏ .decode
-╰──────────────────────────────
-
-╭─〔 📦 CONVERTER MENU 〕
+│ ❏ .dnslookup
+│ ❏ .portscan
+│ ❏ .screenshot
+│ ❏ .define
+│ ❏ .google
+│ ❏ .wiki
+│ ❏ .yts
+│ ❏ .playstore
+│ ❏ .npm
+│ ❏ .sticker
+│ ❏ .toimg
 │ ❏ .tomp3
-│ ❏ .tovn
-│ ❏ .togif
-│ ❏ .toaudio
-│ ❏ .tosticker
-│ ❏ .tourl
-│ ❏ .tofile
+│ ❏ .tts
+│ ❏ .blur
+│ ❏ .invert
+│ ❏ .crop
+│ ❏ .flip
+│ ❏ .grayscale
+│ ❏ .removebg
+│ ❏ .upscale
 ╰──────────────────────────────
 
-╭─〔 🎭 ANIME MENU 〕
-│ ❏ .waifu
-│ ❏ .neko
+╭─〔 📥 DANGEROUS MENU 〕
+│ ❏ .report
+│ ❏ .spam
+│ ❏ .smsbomb
+│ ❏ .callbomb
+╰──────────────────────────────
+
+╭─〔 🕋 ISLAMIC MENU 〕
+│ ❏ .quran
+│ ❏ .hadith
+│ ❏ .prayer
+│ ❏ .qibla
+│ ❏ .asmaulhusna
+╰──────────────────────────────
+
+╭─〔 📊 SYSTEM INFO 〕
+│ ❏ .uptime
+│ ❏ .serverinfo
+│ ❏ .speedtest
+│ ❏ .device
+│ ❏ .runtime
+╰──────────────────────────────
+
+╭─〔 ⚙️ EXTRA UTILS 〕
+│ ❏ .timer
+│ ❏ .password
+│ ❏ .morse
+│ ❏ .binary
+│ ❏ .hex
+│ ❏ .pastebin
+│ ❏ .news
+│ ❏ .crypto
+│ ❏ .movie
 │ ❏ .anime
 │ ❏ .manga
-│ ❏ .character
-│ ❏ .cosplay
-╰──────────────────────────────
-
-╭─〔 👑 GROUP MENU 〕
-│ ❏ .tagall
-│ ❏ .hidetag
-│ ❏ .kick
-│ ❏ .add
-│ ❏ .promote
-│ ❏ .demote
-│ ❏ .mute
-│ ❏ .unmute
-│ ❏ .warn
-│ ❏ .welcome
-│ ❏ .goodbye
-│ ❏ .antilink
-│ ❏ .antispam
-│ ❏ .delete
-╰──────────────────────────────
-
-╭─〔 📢 CHANNEL MENU 〕
-│ ❏ .channelinfo
-│ ❏ .follow
-│ ❏ .unfollow
+│ ❏ .lyrics
+│ ❏ .remind
+│ ❏ .tagme
+│ ❏ .mention
+│ ❏ .snipe
+│ ❏ .editmsg
+│ ❏ .react
+│ ❏ .send
 │ ❏ .forward
-│ ❏ .post
+│ ❏ .clear
 ╰──────────────────────────────
 
-╭─〔 💎 PREMIUM MENU 〕
-│ ❏ .premium
-│ ❏ .vip
-│ ❏ .claim
-│ ❏ .balance
-│ ❏ .daily
-│ ❏ .weekly
-╰──────────────────────────────
-
-╭─〔 ⚙ SETTINGS MENU 〕
-│ ❏ .prefix
-│ ❏ .mode
-│ ❏ .language
-│ ❏ .autoread
-│ ❏ .autotyping
-│ ❏ .autostatus
-╰──────────────────────────────
-
-╭─〔 👑 OWNER MENU 〕
-│ ❏ .self
-│ ❏ .public
-│ ❏ .restart
-│ ❏ .shutdown
-│ ❏ .block
-│ ❏ .unblock
-│ ❏ .ban
-│ ❏ .unban
-│ ❏ .broadcast
-│ ❏ .join
-│ ❏ .leave
-│ ❏ .getfile
-│ ❏ .setppbot
-│ ❏ .setname
-│ ❏ .setbio
-│ ❏ .update
-│ ❏ .eval
-│ ❏ .exec
-│ ❏ .shell
+╭─〔 ✨ NEW SPECIALS 〕
+│ ❏ .ancient
+│ ❏ .hieroglyph
+│ ❏ .runes
+│ ❏ .cuneiform
+│ ❏ .papyrus
+│ ❏ .parchment
+│ ❏ .codex
+│ ❏ .fossil
+│ ❏ .ruins
+│ ❏ .tree
+│ ❏ .forest
+│ ❏ .ocean
+│ ❏ .mountain
+│ ❏ .sunset
+│ ❏ .rainbow
+│ ❏ .storm
+│ ❏ .tornado
+│ ❏ .tsunami
+│ ❏ .earth
+│ ❏ .moon
+│ ❏ .tide
+│ ❏ .airquality
+│ ❏ .uvindex
+│ ❏ .pollen
+│ ❏ .poem
+│ ❏ .song
+│ ❏ .rap
+│ ❏ .script
+│ ❏ .recipe
+│ ❏ .cocktail
+│ ❏ .perfume
+│ ❏ .art
+│ ❏ .sculpture
+│ ❏ .tattoo
+│ ❏ .mural
+│ ❏ .encrypt
+│ ❏ .decrypt
+│ ❏ .selfdestruct
+│ ❏ .burnafter
+│ ❏ .anonymous
+│ ❏ .incognito
+│ ❏ .fakecall
+│ ❏ .fakescreen
+│ ❏ .stealth
 ╰──────────────────────────────
 
 ╭────────────────────────────────────────────╮
-│      👾 Thank You For Using MANI MD 👾
-│      💻 Fast • Stable • Powerful • 300+
+│      👾 Thank You For Using 𝗠𝗔𝗡𝗜 👾
+│      💻 Fast • Stable • Powerful • Real Cmds
 ╰────────────────────────────────────────────╯`;
 
     await sock.sendMessage(from, { 

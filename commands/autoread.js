@@ -1,5 +1,5 @@
 /**
- * Arslan Bot - A WhatsApp Bot
+ * 𝗠𝗔𝗡𝗜 👾 BOT - A WhatsApp Bot
  * Autoread Command - Automatically read all messages
  */
 
@@ -29,7 +29,7 @@ async function autoreadCommand(sock, chatId, message) {
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363408426516135@newsletter',
-                        newsletterName: '𝗧𝗘𝗔𝗠-𝗕𝗟𝗔𝗖𝗞-𝗛𝗔T',
+                        newsletterName: '𝗠𝗔𝗡𝗜 👾',
                         serverMessageId: -1
                     }
                 }
@@ -60,7 +60,7 @@ async function autoreadCommand(sock, chatId, message) {
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
                             newsletterJid: '120363408426516135@newsletter',
-                            newsletterName: '𝗧𝗘𝗔𝗠-𝗕𝗟𝗔𝗖𝗞-𝗛𝗔T',
+                            newsletterName: '𝗠𝗔𝗡𝗜 👾',
                             serverMessageId: -1
                         }
                     }
@@ -83,7 +83,7 @@ async function autoreadCommand(sock, chatId, message) {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363408426516135@newsletter',
-                    newsletterName: '𝗧𝗘𝗔𝗠-𝗕𝗟𝗔𝗖𝗞-𝗛𝗔T',
+                    newsletterName: '𝗠𝗔𝗡𝗜 👾',
                     serverMessageId: -1
                 }
             }
@@ -98,7 +98,7 @@ async function autoreadCommand(sock, chatId, message) {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363408426516135@newsletter',
-                    newsletterName: '𝗧𝗘𝗔𝗠-𝗕𝗟𝗔𝗖𝗞-𝗛𝗔T',
+                    newsletterName: '𝗠𝗔𝗡𝗜 👾',
                     serverMessageId: -1
                 }
             }
@@ -152,7 +152,7 @@ function isBotMentionedInMessage(message, botNumber) {
         }
         
         // Check for bot name mentions (optional, can be customized)
-        const botNames = [global.botname?.toLowerCase(), 'bot', '𝗧𝗘𝗔𝗠-𝗕𝗟𝗔𝗖𝗞-𝗛𝗔T', '𝗧𝗘𝗔𝗠-𝗕𝗟𝗔𝗖𝗞-𝗛𝗔T'];
+        const botNames = [global.botname?.toLowerCase(), 'bot', '𝗠𝗔𝗡𝗜 👾', '𝗠𝗔𝗡𝗜 👾'];
         const words = textContent.toLowerCase().split(/\s+/);
         if (botNames.some(name => words.includes(name))) {
             return true;
