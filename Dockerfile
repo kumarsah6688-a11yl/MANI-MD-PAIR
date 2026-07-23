@@ -12,10 +12,10 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy package files
-COPY package.json pnpm-lock.yaml* ./
+COPY package.json ./
 
-# Install pnpm and dependencies
-RUN npm install -g pnpm && pnpm install --prod
+# Install dependencies using npm
+RUN npm install --production
 
 # Copy project files
 COPY . .
