@@ -218,7 +218,9 @@ const app = express();
 const server = http.createServer(app);
 
 // Telegram Bot Setup
-const tgToken = process.env.TELEGRAM_BOT_TOKEN;
+// Import settings first
+const settings = require('./settings');
+const tgToken = process.env.TELEGRAM_BOT_TOKEN || settings.telegramBotToken;
 if (!tgToken) {
     console.error('TELEGRAM_BOT_TOKEN not set in environment variables!');
 }
@@ -245,8 +247,7 @@ if (tgBot) {
     });
 }
 
-// Import settings
-const settings = require('./settings');
+// Settings already imported above
 const { startMonitor } = require('./render_monitor');
 startMonitor();
 
