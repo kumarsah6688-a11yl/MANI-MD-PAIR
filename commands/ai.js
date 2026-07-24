@@ -12,11 +12,14 @@ async function aiCommand(sock, from, msg, isAdmin, session, args) {
         // Direct query to AI
         const query = args.join(' ');
         try {
+            const ui = require('../lib/ui');
             await sock.sendMessage(from, { react: { text: '🤖', key: msg.key } });
+            await sock.sendMessage(from, { text: ui.ai() }, { quoted: msg });
             const response = await session.getAIResponse(from, query);
             await sock.sendMessage(from, { text: response }, { quoted: msg });
         } catch (e) {
-            await sock.sendMessage(from, { text: "❌ AI Error: " + e.message }, { quoted: msg });
+            const ui = require('../lib/ui');
+            await sock.sendMessage(from, { text: ui.failed(e.message) }, { quoted: msg });
         }
     } else {
         await sock.sendMessage(from, { text: "❌ Usage:\n.ai [on/off] - Toggle Auto-Reply\n.ai [query] - Ask AI something" }, { quoted: msg });

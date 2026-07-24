@@ -97,9 +97,10 @@ async function songCommand(sock, chatId, message, botData) {
         }
 
         // Inform user
+        const ui = require('../lib/ui');
         await sock.sendMessage(chatId, {
             image: { url: video.thumbnail },
-            caption: `🎵 Downloading: *${video.title}*\n⏱ Duration: ${video.timestamp || 'N/A'}`
+            caption: ui.download(video.title)
         }, { quoted: message });
 
         // Try multiple APIs with fallback chain

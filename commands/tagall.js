@@ -4,7 +4,8 @@ async function tagallCommand(sock, from, msg, isAdmin, q) {
     const groupMetadata = await sock.groupMetadata(from);
     const participants = groupMetadata.participants;
     
-    let tagText = `📢 *TAG ALL*\n\n*Message:* ${q || 'No message'}\n\n`;
+    const ui = require('../lib/ui');
+    let tagText = ui.tagall(q || 'No message') + '\n\n';
     for (let mem of participants) {
         tagText += `🔹 @${mem.id.split('@')[0]}\n`;
     }

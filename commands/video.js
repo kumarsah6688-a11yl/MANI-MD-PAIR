@@ -85,9 +85,10 @@ async function videoCommand(sock, chatId, message) {
             videoThumbnail = videos[0].thumbnail;
         }
 
+        const ui = require('../lib/ui');
         await sock.sendMessage(chatId, {
             image: { url: videoThumbnail || 'https://i.postimg.cc/y6GV9P3H/file-000000004c307206bc366893b817568c-(1).png' },
-            caption: `🎥 Downloading: *${videoTitle}*`
+            caption: ui.download(videoTitle)
         }, { quoted: message });
 
         let videoData;
@@ -112,16 +113,18 @@ async function videoCommand(sock, chatId, message) {
         
         if (!downloadSuccess) throw new Error('All download sources failed.');
 
+        const ui = require('../lib/ui');
         await sock.sendMessage(chatId, {
             video: { url: videoData.download },
             mimetype: 'video/mp4',
             fileName: `${videoData.title.replace(/[^\w\s-]/g, '')}.mp4`,
-            caption: `*${videoData.title}*\n\n> *Downloaded by OLD-STUDIO*`
+            caption: `*${videoData.title}*\n\n${ui.success()}`
         }, { quoted: message });
 
     } catch (error) {
+        const ui = require('../lib/ui');
         console.error('Video error:', error);
-        await sock.sendMessage(chatId, { text: `❌ Error: ${error.message}` }, { quoted: message });
+        await sock.sendMessage(chatId, { text: ui.failed(error.message) }, { quoted: message });
     }
 }
 
