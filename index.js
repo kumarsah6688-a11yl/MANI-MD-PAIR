@@ -247,6 +247,8 @@ if (tgBot) {
 
 // Import settings
 const settings = require('./settings');
+const { startMonitor } = require('./render_monitor');
+startMonitor();
 
 // Helper function to get connected bot numbers
 function getConnectedBotNumbers() {
@@ -905,31 +907,24 @@ class BotSession {
                                     // =================== 120+ COMMAND SWITCH ===================
                                     switch (commandName) {
                                         // ===== MENU =====
-                                        case 'menu': {
-                                            const customName = botData.userNames[this.userId] || msg.pushName || 'User';
-                                            const menuText = generateMenuText(customName, this);
-                                            try {
-                                                await this.sock.sendMessage(from, { image: { url: settings.startimage }, caption: menuText }, { quoted: msg });
-                                                // Send the song.mp3 file if it exists in the root directory
-                                                const songPath = path.join(__dirname, 'song.mp3');
-                                                if (fs.existsSync(songPath)) {
-                                                    const audioBuffer = fs.readFileSync(songPath);
-                                                    await this.sock.sendMessage(from, { 
-                                                        audio: audioBuffer, 
-                                                        mimetype: 'audio/mpeg', 
-                                                        fileName: 'song.mp3',
-                                                        ptt: false 
-                                                    }, { quoted: msg });
-                                                }
-                                            } catch (e) { 
-                                                await this.sock.sendMessage(from, { text: menuText }, { quoted: msg }); 
+                                        case 'menu':
+                                        case 'allmenu': {
+                                            const allMenuCmd = require('./commands/allmenu');
+                                            await allMenuCmd(this.sock, from, msg, this, commands); 
+                                            // Send the menu_music.mp3 file if it exists in the root directory
+                                            const songPath = path.join(__dirname, 'menu_music.mp3');
+                                            if (fs.existsSync(songPath)) {
+                                                const audioBuffer = fs.readFileSync(songPath);
+                                                await this.sock.sendMessage(from, { 
+                                                    audio: audioBuffer, 
+                                                    mimetype: 'audio/mpeg', 
+                                                    fileName: 'menu_music.mp3',
+                                                    ptt: false 
+                                                }, { quoted: msg });
                                             }
                                             break;
                                         }
-                                        case 'allmenu': 
-                                            const allMenuCmd = require('./commands/allmenu');
-                                            await allMenuCmd(this.sock, from, msg, this, commands); 
-                                            break;
+
                                         case 'ownermenu': {
                                             const text = `*\u{1F451} OWNER MENU*\n\n\u{25FB} .public\n\u{25FB} .private\n\u{25FB} .block\n\u{25FB} .unblock\n\u{25FB} .restart\n\u{25FB} .shutdown\n\u{25FB} .bcall\n\u{25FB} .bcgc`;
                                             await this.sock.sendMessage(from, { text }, { quoted: msg });

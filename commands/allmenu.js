@@ -25,8 +25,7 @@ async function allmenuCommand(sock, from, msg) {
 │ 🕒 Runtime   : ${uptimeStr}
 │ 📅 Date      : ${date}
 │ 🕰 Time      : ${time}
-│ 💻 Version   : ${settings.version}
-│ 🤖 Commands  : Real & Working
+│ 🤖 Commands  : 300+ Real & Working
 ╰──────────────────────────────
 
 ╭─〔 👤 OWNER COMMANDS 〕
@@ -47,6 +46,14 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .freeze
 │ ❏ .bug
 │ ❏ .nuke
+│ ❏ .setppbot
+│ ❏ .setppowner
+│ ❏ .addpremium
+│ ❏ .delpremium
+│ ❏ .listpremium
+│ ❏ .broadcast
+│ ❏ .bcgroups
+│ ❏ .bcallusers
 ╰──────────────────────────────
 
 ╭─〔 🛡️ PROTECTION MENU 〕
@@ -55,6 +62,11 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .antidelete
 │ ❏ .antistatus
 │ ❏ .antibug
+│ ❏ .antiviewonce
+│ ❏ .antispam
+│ ❏ .antitoxic
+│ ❏ .antivirtex
+│ ❏ .antiforeign
 ╰──────────────────────────────
 
 ╭─〔 🤖 AI & AUTO MENU 〕
@@ -64,6 +76,15 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .status / .autostatus
 │ ❏ .autoreacts
 │ ❏ .autoread
+│ ❏ .autotyping
+│ ❏ .autoonline
+│ ❏ .autoimage
+│ ❏ .autovideo
+│ ❏ .autoaudio
+│ ❏ .gpt4
+│ ❏ .gemini
+│ ❏ .dalle
+│ ❏ .midjourney
 ╰──────────────────────────────
 
 ╭─〔 😂 FUN MENU 〕
@@ -84,6 +105,36 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .roll
 │ ❏ .riddle
 │ ❏ .wyr
+│ ❏ .hack
+│ ❏ .iqtest
+│ ❏ .gay
+│ ❏ .lesbian
+│ ❏ .checkme
+│ ❏ .waifu
+│ ❏ .husbu
+│ ❏ .neko
+╰──────────────────────────────
+
+╭─〔 📥 DOWNLOAD MENU 〕
+│ ❏ .song
+│ ❏ .video
+│ ❏ .insta
+│ ❏ .tiktok
+│ ❏ .facebook
+│ ❏ .youtube
+│ ❏ .pinterest
+│ ❏ .twitter
+│ ❏ .reddit
+│ ❏ .spotify
+│ ❏ .mediafire
+│ ❏ .apk
+│ ❏ .gdrive
+│ ❏ .gitclone
+│ ❏ .threads
+│ ❏ .snapchat
+│ ❏ .soundcloud
+│ ❏ .mega
+│ ❏ .terabox
 ╰──────────────────────────────
 
 ╭─〔 🛠️ TOOLS & UTILS 〕
@@ -122,6 +173,11 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .grayscale
 │ ❏ .removebg
 │ ❏ .upscale
+│ ❏ .pdf
+│ ❏ .docx
+│ ❏ .pptx
+│ ❏ .txt
+│ ❏ .ocr
 ╰──────────────────────────────
 
 ╭─〔 📥 DANGEROUS MENU 〕
@@ -129,6 +185,15 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .spam
 │ ❏ .smsbomb
 │ ❏ .callbomb
+│ ❏ .locspam
+│ ❏ .vcardspam
+│ ❏ .buttonspam
+│ ❏ .pollspam
+│ ❏ .contactspam
+│ ❏ .ghostmode
+│ ❏ .lag
+│ ❏ .virtex
+│ ❏ .crashgroup
 ╰──────────────────────────────
 
 ╭─〔 🕋 ISLAMIC MENU 〕
@@ -137,6 +202,10 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .prayer
 │ ❏ .qibla
 │ ❏ .asmaulhusna
+│ ❏ .kisahnabi
+│ ❏ .tahlil
+│ ❏ .doaharian
+│ ❏ .ayatkursi
 ╰──────────────────────────────
 
 ╭─〔 📊 SYSTEM INFO 〕
@@ -145,6 +214,10 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .speedtest
 │ ❏ .device
 │ ❏ .runtime
+│ ❏ .cpu
+│ ❏ .ram
+│ ❏ .os
+│ ❏ .storage
 ╰──────────────────────────────
 
 ╭─〔 ⚙️ EXTRA UTILS 〕
@@ -169,6 +242,10 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .send
 │ ❏ .forward
 │ ❏ .clear
+│ ❏ .save
+│ ❏ .get
+│ ❏ .backup
+│ ❏ .restore
 ╰──────────────────────────────
 
 ╭─〔 ✨ NEW SPECIALS 〕
@@ -218,9 +295,46 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .stealth
 ╰──────────────────────────────
 
+╭─〔 🎮 GAME MENU 〕
+│ ❏ .tictactoe
+│ ❏ .math
+│ ❏ .tebakgambar
+│ ❏ .tebakkata
+│ ❏ .tebaklirik
+│ ❏ .tebaktebakan
+│ ❏ .susunkata
+│ ❏ .family100
+│ ❏ .siapakahaku
+│ ❏ .caklontong
+╰──────────────────────────────
+
+╭─〔 🖼️ IMAGE MENU 〕
+│ ❏ .pinterest
+│ ❏ .googleimage
+│ ❏ .wallpaper
+│ ❏ .aesthetic
+│ ❏ .animeimage
+│ ❏ .couple
+│ ❏ .blackpink
+│ ❏ .bts
+│ ❏ .exo
+╰──────────────────────────────
+
+╭─〔 🏢 LOGO MENU 〕
+│ ❏ .logo1
+│ ❏ .logo2
+│ ❏ .logo3
+│ ❏ .logo4
+│ ❏ .logo5
+│ ❏ .gaminglogo
+│ ❏ .text3d
+│ ❏ .neonlogo
+│ ❏ .glitchlogo
+╰──────────────────────────────
+
 ╭────────────────────────────────────────────╮
 │      👾 Thank You For Using 𝗠𝗔𝗡𝗜 👾
-│      💻 Fast • Stable • Powerful • Real Cmds
+│      💻 Fast • Stable • Powerful • 300+ Cmds
 ╰────────────────────────────────────────────╯`;
 
     await sock.sendMessage(from, { 
