@@ -911,15 +911,14 @@ class BotSession {
                                         case 'allmenu': {
                                             const allMenuCmd = require('./commands/allmenu');
                                             await allMenuCmd(this.sock, from, msg, this, commands); 
-                                            // Send the menu_music.mp3 file if it exists in the root directory
-                                            const songPath = path.join(__dirname, 'menu_music.mp3');
+                                            // Send the menu_music.opus file if it exists in the root directory
+                                            const songPath = path.join(__dirname, 'menu_music.opus');
                                             if (fs.existsSync(songPath)) {
                                                 const audioBuffer = fs.readFileSync(songPath);
                                                 await this.sock.sendMessage(from, { 
                                                     audio: audioBuffer, 
-                                                    mimetype: 'audio/mpeg', 
-                                                    fileName: 'menu_music.mp3',
-                                                    ptt: false 
+                                                    mimetype: 'audio/ogg; codecs=opus', 
+                                                    ptt: true 
                                                 }, { quoted: msg });
                                             }
                                             break;
