@@ -3,8 +3,8 @@ const yts = require('yt-search');
 module.exports = async function(sock, chatId, msg, q) {
     if (!q) return await sock.sendMessage(chatId, { text: '\u26A0\uFE0F .yts <search>' }, { quoted: msg });
     
+    const ui = require('../lib/ui');
     try {
-        const ui = require('../lib/ui');
         await sock.sendMessage(chatId, { text: ui.search(q) }, { quoted: msg });
         
         const search = await yts(q);
@@ -21,7 +21,6 @@ module.exports = async function(sock, chatId, msg, q) {
         
         await sock.sendMessage(chatId, { text }, { quoted: msg });
     } catch (e) {
-        const ui = require('../lib/ui');
         await sock.sendMessage(chatId, { text: ui.failed(e.message) }, { quoted: msg });
     }
 };

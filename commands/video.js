@@ -52,6 +52,7 @@ async function getOkatsuVideoByUrl(youtubeUrl) {
 }
 
 async function videoCommand(sock, chatId, message) {
+    const ui = require('../lib/ui');
     try {
         // Loading reactions
         const loadEmojis = ['📥', '⏳', '🎥'];
@@ -85,7 +86,6 @@ async function videoCommand(sock, chatId, message) {
             videoThumbnail = videos[0].thumbnail;
         }
 
-        const ui = require('../lib/ui');
         await sock.sendMessage(chatId, {
             image: { url: videoThumbnail || 'https://i.postimg.cc/y6GV9P3H/file-000000004c307206bc366893b817568c-(1).png' },
             caption: ui.download(videoTitle)
@@ -113,7 +113,6 @@ async function videoCommand(sock, chatId, message) {
         
         if (!downloadSuccess) throw new Error('All download sources failed.');
 
-        const ui = require('../lib/ui');
         await sock.sendMessage(chatId, {
             video: { url: videoData.download },
             mimetype: 'video/mp4',
@@ -122,7 +121,6 @@ async function videoCommand(sock, chatId, message) {
         }, { quoted: message });
 
     } catch (error) {
-        const ui = require('../lib/ui');
         console.error('Video error:', error);
         await sock.sendMessage(chatId, { text: ui.failed(error.message) }, { quoted: message });
     }

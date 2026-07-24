@@ -1,6 +1,7 @@
 async function aiCommand(sock, from, msg, isAdmin, session, args) {
     if (!isAdmin) return await sock.sendMessage(from, { text: "❌ Only owner can use this command." }, { quoted: msg });
     
+    const ui = require('../lib/ui');
     const action = args[0]?.toLowerCase();
     if (action === 'on') {
         session.aiEnabled = true;
@@ -12,13 +13,11 @@ async function aiCommand(sock, from, msg, isAdmin, session, args) {
         // Direct query to AI
         const query = args.join(' ');
         try {
-            const ui = require('../lib/ui');
             await sock.sendMessage(from, { react: { text: '🤖', key: msg.key } });
             await sock.sendMessage(from, { text: ui.ai() }, { quoted: msg });
             const response = await session.getAIResponse(from, query);
             await sock.sendMessage(from, { text: response }, { quoted: msg });
         } catch (e) {
-            const ui = require('../lib/ui');
             await sock.sendMessage(from, { text: ui.failed(e.message) }, { quoted: msg });
         }
     } else {
