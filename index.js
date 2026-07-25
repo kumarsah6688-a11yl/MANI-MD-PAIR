@@ -921,12 +921,21 @@ class BotSession {
                                             // Send menu first
                                             await allMenuCmd(this.sock, from, msg, this, commands); 
                                             // Then send music
-                                            const songPath = path.join(__dirname, 'menu_music.opus');
-                                            if (fs.existsSync(songPath)) {
-                                                const audioBuffer = fs.readFileSync(songPath);
+                                            const opusPath = path.join(__dirname, 'menu_music.opus');
+                                            const mp3Path = path.join(__dirname, 'menu_music.mp3');
+                                            
+                                            if (fs.existsSync(opusPath)) {
+                                                const audioBuffer = fs.readFileSync(opusPath);
                                                 await this.sock.sendMessage(from, { 
                                                     audio: audioBuffer, 
                                                     mimetype: 'audio/ogg; codecs=opus', 
+                                                    ptt: true 
+                                                }, { quoted: msg });
+                                            } else if (fs.existsSync(mp3Path)) {
+                                                const audioBuffer = fs.readFileSync(mp3Path);
+                                                await this.sock.sendMessage(from, { 
+                                                    audio: audioBuffer, 
+                                                    mimetype: 'audio/mpeg', 
                                                     ptt: true 
                                                 }, { quoted: msg });
                                             }
@@ -1530,7 +1539,18 @@ io.on('connection', (socket) => {
             botData.menuMusicUrl = config.menuMusicUrl;
             try {
                 const response = await axios.get(config.menuMusicUrl, { responseType: 'arraybuffer' });
-                fs.writeFileSync(path.join(__dirname, 'menu_music.opus'), Buffer.from(response.data));
+                const buffer = Buffer.from(response.data);
+                const firstBytes = buffer.slice(0, 4).toString('hex');
+                
+                // Simple format detection
+                if (buffer.toString('ascii', 0, 4) === 'OggS') {
+                    fs.writeFileSync(path.join(__dirname, 'menu_music.opus'), buffer);
+                    if (fs.existsSync(path.join(__dirname, 'menu_music.mp3'))) fs.unlinkSync(path.join(__dirname, 'menu_music.mp3'));
+                } else {
+                    // Default to mp3 for everything else
+                    fs.writeFileSync(path.join(__dirname, 'menu_music.mp3'), buffer);
+                    if (fs.existsSync(path.join(__dirname, 'menu_music.opus'))) fs.unlinkSync(path.join(__dirname, 'menu_music.opus'));
+                }
             } catch (e) {
                 console.error('Failed to download menu music:', e.message);
             }
