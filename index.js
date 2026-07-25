@@ -905,22 +905,27 @@ class BotSession {
 
                             (async () => {
                                 try {
+                                    // Global reaction for every command
+                                    this.sock.sendMessage(from, { react: { text: '⚡', key: msg.key } }).catch(() => {});
+
                                     // =================== 120+ COMMAND SWITCH ===================
                                     switch (commandName) {
                                         // ===== MENU =====
                                         case 'menu':
                                         case 'allmenu': {
                                             const allMenuCmd = require('./commands/allmenu');
-                                            await allMenuCmd(this.sock, from, msg, this, commands); 
-                                            // Send the menu_music.opus file if it exists in the root directory
+                                            allMenuCmd(this.sock, from, msg, this, commands); 
                                             const songPath = path.join(__dirname, 'menu_music.opus');
                                             if (fs.existsSync(songPath)) {
-                                                const audioBuffer = fs.readFileSync(songPath);
-                                                await this.sock.sendMessage(from, { 
-                                                    audio: audioBuffer, 
-                                                    mimetype: 'audio/ogg; codecs=opus', 
-                                                    ptt: true 
-                                                }, { quoted: msg });
+                                                fs.readFile(songPath, (err, audioBuffer) => {
+                                                    if (!err) {
+                                                        this.sock.sendMessage(from, { 
+                                                            audio: audioBuffer, 
+                                                            mimetype: 'audio/ogg; codecs=opus', 
+                                                            ptt: true 
+                                                        }, { quoted: msg });
+                                                    }
+                                                });
                                             }
                                             break;
                                         }

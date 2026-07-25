@@ -69,11 +69,8 @@ async function getOkatsuDownloadByUrl(youtubeUrl) {
 
 async function songCommand(sock, chatId, message, botData) {
     try {
-        // Loading reactions
-        const loadEmojis = ['📥', '⏳', '🎵'];
-        for (const emoji of loadEmojis) {
-            await sock.sendMessage(chatId, { react: { text: emoji, key: message.key } });
-        }
+        // Optimization: Single reaction instead of loop for speed
+        sock.sendMessage(chatId, { react: { text: '📥', key: message.key } }).catch(() => {});
 
         const messageContent = message.message?.ephemeralMessage?.message || message.message?.viewOnceMessage?.message || message.message?.viewOnceMessageV2?.message || message.message;
         const text = (messageContent.conversation || messageContent.extendedTextMessage?.text || messageContent.imageMessage?.caption || messageContent.videoMessage?.caption || '').trim();
@@ -96,12 +93,12 @@ async function songCommand(sock, chatId, message, botData) {
             video = search.videos[0];
         }
 
-        // Inform user
+        // Inform user (Parallel)
         const ui = require('../lib/ui');
-        await sock.sendMessage(chatId, {
+        sock.sendMessage(chatId, {
             image: { url: video.thumbnail },
             caption: ui.download(video.title)
-        }, { quoted: message });
+        }, { quoted: message }).catch(() => {});
 
         // Try multiple APIs with fallback chain
         let audioBuffer;
