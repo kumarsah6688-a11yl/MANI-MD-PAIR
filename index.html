@@ -273,81 +273,62 @@
 <div class="glow-orb"></div>
 <div class="particles" id="particles"></div>
 
-<!-- Channel modal -->
-<div id="channelModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-head">
-      <h2>required_channels.sh</h2>
-      <button class="modal-close" id="modalClose">&times;</button>
-    </div>
-    <div class="modal-body">
-      <p>// Follow the official channels below to unlock pairing access and receive live updates.</p>
-      <div class="channel-list">
-        <a href="https://whatsapp.com/channel/0029VaGiJKfIiRoybPBMTy38" target="_blank" class="channel-item"><i class="fab fa-whatsapp"></i><span>WhatsApp Channel — Updates</span></a>
-        <a href="https://whatsapp.com/channel/0029Vb7SDZ31iUxhzG0W4t1M" target="_blank" class="channel-item"><i class="fab fa-whatsapp"></i><span>WhatsApp Channel — Support</span></a>
-        <a href="https://www.youtube.com/@Team𝗠𝗔𝗡𝗜👾haker" target="_blank" class="channel-item"><i class="fab fa-youtube"></i><span>YouTube Channel</span></a>
-        <a href="https://whatsapp.com/channel/0029VbCkaqb5fM5VgpvRJc2Y" target="_blank" class="channel-item"><i class="fab fa-whatsapp"></i><span>WhatsApp Channel — Announcements</span></a>
-      </div>
-      <button class="btn" id="confirmFollow"><i class="fas fa-check"></i> I've followed all channels</button>
-    </div>
-  </div>
-</div>
-
 <nav>
   <div class="brand">
-    <div class="mark">$_</div>
+    <div class="mark">M</div>
     <div>
-      <div class="name">𝗠𝗔𝗡𝗜👾 MINI MD</div>
-      <div class="tag">whatsapp automation</div>
+      <div class="name">𝗠𝗔𝗡𝗜👾 TECH</div>
+      <div class="tag">Next-Gen Automation</div>
     </div>
   </div>
   <div class="nav-links" id="navLinks">
-    <a href="#features">features</a>
-    <a href="#connect">connect</a>
-    <a href="#links">links</a>
+    <a href="#pairing"><i class="fas fa-link"></i> Pairing</a>
+    <a href="#customize"><i class="fas fa-cog"></i> Customize</a>
+    <a href="#links"><i class="fas fa-external-link"></i> Links</a>
   </div>
   <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
 </nav>
 
 <header>
-  <div class="eyebrow"><span class="pulse"></span> SESSION READY // NODE ONLINE</div>
-  <h1><span class="glitch-wrap" data-text="𝗠𝗔𝗡𝗜👾 MINI MD">𝗠𝗔𝗡𝗜👾 MINI MD</span></h1>
-  <p class="sub">A fast, minimal WhatsApp automation core — built &amp; maintained by <strong>𝗠𝗔𝗡𝗜👾 TECH</strong>.</p>
-
+  <div class="eyebrow"><span class="pulse"></span> System Status: Online</div>
+  <h1><div class="glitch-wrap" data-text="𝗠𝗔𝗡𝗜👾 BOT SYSTEM">𝗠𝗔𝗡𝗜👾 BOT SYSTEM</div></h1>
+  <p class="sub">The most powerful <strong>Multi-Device</strong> WhatsApp automation bridge. Fast, secure, and fully customizable.</p>
+  
   <div class="stats-row">
-    <div class="stat-card"><i class="fas fa-signal"></i><div><div class="stat-value" id="activeSockets">0</div><div class="stat-label">Active Sockets</div></div></div>
-    <div class="stat-card"><i class="fas fa-users"></i><div><div class="stat-value" id="totalUsers">0</div><div class="stat-label">Total Users</div></div></div>
+    <div class="stat-card">
+      <i class="fas fa-server"></i>
+      <div>
+        <div class="stat-value" id="activeSockets">0</div>
+        <div class="stat-label">Active Nodes</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-users"></i>
+      <div>
+        <div class="stat-value" id="totalUsers">0</div>
+        <div class="stat-label">Total Operators</div>
+      </div>
+    </div>
   </div>
 </header>
 
 <main>
-  <section id="features" class="panel" data-label="./features">
-    <h2><i class="fas fa-star"></i> Features</h2>
-    <div class="feature-grid">
-      <div class="feature-item"><i class="fas fa-reply"></i><h3>Auto Replies</h3><p>Smart automated responses based on customizable triggers.</p></div>
-      <div class="feature-item"><i class="fas fa-image"></i><h3>Media Tools</h3><p>Download, convert, and manage media files with ease.</p></div>
-      <div class="feature-item"><i class="fas fa-puzzle-piece"></i><h3>Commands System</h3><p>Extend functionality with custom commands and scripts.</p></div>
-      <div class="feature-item"><i class="fas fa-shield-alt"></i><h3>Security</h3><p>Built-in safeguards to protect your privacy and session data.</p></div>
-    </div>
-  </section>
-
-  <section id="connect" class="panel" data-label="./connect">
-    <h2><i class="fas fa-link"></i> Connect to WhatsApp</h2>
+  <section id="pairing" class="panel" data-label="./pairing_bridge">
+    <h2><i class="fas fa-plug"></i> Device Pairing</h2>
     <div class="instructions">
-      <h3>How to connect</h3>
+      <h3>Connection Protocol:</h3>
       <ol>
-        <li>Enter your WhatsApp number with country code (no "+", no spaces, no brackets)</li>
-        <li>Click "Request Pairing Code"</li>
-        <li>Copy the 8-digit code</li>
-        <li>Open WhatsApp → Settings → Linked Devices → Link a Device</li>
-        <li>Paste the code when prompted</li>
+        <li>Enter your WhatsApp number with country code (e.g., 91XXXXXXXXXX).</li>
+        <li>Request a pairing code and wait for it to appear.</li>
+        <li>Open WhatsApp > Linked Devices > Link with Phone Number.</li>
+        <li>Enter the 8-digit code displayed here.</li>
       </ol>
     </div>
 
     <div class="input-box">
       <div class="input-group">
         <i class="fas fa-phone"></i>
-        <input type="tel" id="phone" placeholder="e.g. 923300000000 (with country code)">
+        <input type="text" id="phone" placeholder="91XXXXXXXXXX">
       </div>
       <button class="btn" id="requestPairing"><i class="fas fa-key"></i> Request Pairing Code</button>
     </div>
@@ -358,6 +339,44 @@
       <div class="code-box" id="pairingCode" onclick="copyCode()">0000 0000</div>
       <div class="copy-hint">Tap the code to copy</div>
       <div class="waiting"><span class="dot"></span> Waiting for device to link...</div>
+    </div>
+  </section>
+
+  <section id="customize" class="panel" data-label="./customization_core">
+    <h2><i class="fas fa-sliders-h"></i> Bot Customization</h2>
+    <div class="instructions">
+      <h3>Settings Management:</h3>
+      <p>Login to your admin panel to change bot images, music, and account details.</p>
+    </div>
+    
+    <div id="adminAuth" class="input-box">
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="adminPass" placeholder="Admin Password">
+        </div>
+        <button class="btn btn-outline" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Access Core Settings</button>
+    </div>
+
+    <div id="configPanel" style="display:none; margin-top:20px;">
+        <div class="input-box" style="max-width:100%;">
+            <div class="input-group">
+                <i class="fas fa-image"></i>
+                <input type="text" id="startImage" placeholder="Start Image URL (https://...)">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-music"></i>
+                <input type="text" id="menuMusic" placeholder="Menu Music URL (Direct link to .opus/.mp3)">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user-circle"></i>
+                <input type="text" id="ownerName" placeholder="Owner Name">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-robot"></i>
+                <input type="text" id="botName" placeholder="Bot Name">
+            </div>
+            <button class="btn" id="saveConfig"><i class="fas fa-save"></i> Save & Apply Changes</button>
+        </div>
     </div>
   </section>
 
@@ -426,21 +445,6 @@ const navLinks = document.getElementById('navLinks');
 navToggle.addEventListener('click', ()=> navLinks.classList.toggle('active'));
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>navLinks.classList.remove('active')));
 
-/* ---------------- Channel modal ---------------- */
-const channelModal = document.getElementById('channelModal');
-const modalClose = document.getElementById('modalClose');
-const confirmFollow = document.getElementById('confirmFollow');
-window.addEventListener('load', ()=>{
-  if(!localStorage.getItem('𝗠𝗔𝗡𝗜👾_followed_channels')){
-    setTimeout(()=>channelModal.classList.add('active'), 1200);
-  }
-});
-modalClose.addEventListener('click', ()=>channelModal.classList.remove('active'));
-confirmFollow.addEventListener('click', ()=>{
-  localStorage.setItem('𝗠𝗔𝗡𝗜👾_followed_channels','1');
-  channelModal.classList.remove('active');
-});
-
 /* ---------------- Toast ---------------- */
 const toast = document.getElementById('toast');
 function showToast(msg){
@@ -508,6 +512,52 @@ socket.on('connection-status', (status)=>{
     showToast('CONNECTED SUCCESSFULLY!');
     setTimeout(()=>location.reload(), 3000);
   }
+});
+
+/* ---------------- Customization logic ---------------- */
+const loginBtn = document.getElementById('loginBtn');
+const adminPassInput = document.getElementById('adminPass');
+const adminAuthDiv = document.getElementById('adminAuth');
+const configPanel = document.getElementById('configPanel');
+const saveConfigBtn = document.getElementById('saveConfig');
+
+loginBtn.addEventListener('click', () => {
+    socket.emit('admin-auth', adminPassInput.value);
+});
+
+socket.on('admin-auth-success', () => {
+    showToast('ACCESS GRANTED');
+    adminAuthDiv.style.display = 'none';
+    configPanel.style.display = 'block';
+    socket.emit('get-config');
+});
+
+socket.on('admin-auth-fail', () => {
+    showToast('ACCESS DENIED');
+    adminPassInput.value = '';
+    adminPassInput.focus();
+});
+
+socket.on('current-config', (config) => {
+    document.getElementById('startImage').value = config.startimage || '';
+    document.getElementById('menuMusic').value = config.menuMusicUrl || '';
+    document.getElementById('ownerName').value = config.ownerName || '';
+    document.getElementById('botName').value = config.botName || '';
+});
+
+saveConfigBtn.addEventListener('click', () => {
+    const config = {
+        startimage: document.getElementById('startImage').value,
+        menuMusicUrl: document.getElementById('menuMusic').value,
+        ownerName: document.getElementById('ownerName').value,
+        botName: document.getElementById('botName').value
+    };
+    socket.emit('update-config', config);
+    showToast('UPDATING SYSTEM...');
+});
+
+socket.on('config-updated', () => {
+    showToast('SETTINGS APPLIED SUCCESSFULLY');
 });
 
 socket.on('stats', (data)=>{

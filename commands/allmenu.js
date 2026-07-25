@@ -116,6 +116,7 @@ async function allmenuCommand(sock, from, msg) {
 ╰──────────────────────────────
 
 ╭─〔 📥 DOWNLOAD MENU 〕
+│ ❏ .musicmenu
 │ ❏ .song
 │ ❏ .video
 │ ❏ .insta
@@ -293,7 +294,7 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .fakecall
 │ ❏ .fakescreen
 │ ❏ .stealth
-│ ❏ .mani
+│ ❏ .you
 ╰──────────────────────────────
 
 ╭─〔 🎮 GAME MENU 〕

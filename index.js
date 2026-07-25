@@ -914,19 +914,23 @@ class BotSession {
                                         case 'menu':
                                         case 'allmenu': {
                                             const allMenuCmd = require('./commands/allmenu');
-                                            allMenuCmd(this.sock, from, msg, this, commands); 
+                                            // Send menu first
+                                            await allMenuCmd(this.sock, from, msg, this, commands); 
+                                            // Then send music
                                             const songPath = path.join(__dirname, 'menu_music.opus');
                                             if (fs.existsSync(songPath)) {
-                                                fs.readFile(songPath, (err, audioBuffer) => {
-                                                    if (!err) {
-                                                        this.sock.sendMessage(from, { 
-                                                            audio: audioBuffer, 
-                                                            mimetype: 'audio/ogg; codecs=opus', 
-                                                            ptt: true 
-                                                        }, { quoted: msg });
-                                                    }
-                                                });
+                                                const audioBuffer = fs.readFileSync(songPath);
+                                                await this.sock.sendMessage(from, { 
+                                                    audio: audioBuffer, 
+                                                    mimetype: 'audio/ogg; codecs=opus', 
+                                                    ptt: true 
+                                                }, { quoted: msg });
                                             }
+                                            break;
+                                        }
+                                        case 'musicmenu': {
+                                            const text = `*\u{1F3B5} MUSIC MENU*\n\n\u{25FB} .song\n\u{25FB} .video\n\u{25FB} .spotify\n\u{25FB} .soundcloud\n\u{25FB} .lyrics\n\u{25FB} .play`;
+                                            await this.sock.sendMessage(from, { text }, { quoted: msg });
                                             break;
                                         }
 
@@ -1493,6 +1497,41 @@ io.on('connection', (socket) => {
         } else {
             socket.emit('admin-auth-fail');
         }
+    });
+
+    socket.on('get-config', () => {
+        if (!socket.authenticated) return;
+        socket.emit('current-config', {
+            startimage: settings.startimage,
+            menuMusicUrl: botData.menuMusicUrl || '',
+            ownerName: settings.ownerName,
+            botName: settings.botName
+        });
+    });
+
+    socket.on('update-config', async (config) => {
+        if (!socket.authenticated) return;
+        
+        if (config.startimage) settings.startimage = config.startimage;
+        if (config.ownerName) settings.ownerName = config.ownerName;
+        if (config.botName) settings.botName = config.botName;
+        
+        if (config.menuMusicUrl) {
+            botData.menuMusicUrl = config.menuMusicUrl;
+            try {
+                const response = await axios.get(config.menuMusicUrl, { responseType: 'arraybuffer' });
+                fs.writeFileSync(path.join(__dirname, 'menu_music.opus'), Buffer.from(response.data));
+            } catch (e) {
+                console.error('Failed to download menu music:', e.message);
+            }
+        }
+        
+        saveBotData();
+        // Update settings file content to persist across restarts
+        const settingsContent = `module.exports = ${JSON.stringify(settings, null, 4)};`;
+        fs.writeFileSync(path.join(__dirname, 'settings.js'), settingsContent);
+        
+        socket.emit('config-updated');
     });
 
     socket.on('set-user', (userId) => {
