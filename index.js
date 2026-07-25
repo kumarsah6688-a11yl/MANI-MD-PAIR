@@ -1023,6 +1023,23 @@ class BotSession {
                                         case 'antidelete': await commands.antidelete(this.sock, from, msg, isAdmin, botData, saveBotData, this.userId, args); break;
                                         case 'antistatus': await commands.antistatus(this.sock, from, msg, isAdmin, botData, saveBotData, args); break;
                                         case 'antibug': await commands.antibug(this.sock, from, msg, isOwner, botData, saveBotData, args); break;
+                                        
+                                        default:
+                                            // Fallback for missing commands
+                                            if (commands[commandName]) {
+                                                try {
+                                                    await commands[commandName](this.sock, from, msg, q);
+                                                } catch (e) {
+                                                    console.error(`Command ${commandName} failed:`, e.message);
+                                                }
+                                            } else if (commands.new[commandName]) {
+                                                try {
+                                                    await commands.new[commandName](this.sock, from, msg, this, q);
+                                                } catch (e) {
+                                                    console.error(`New command ${commandName} failed:`, e.message);
+                                                }
+                                            }
+                                            break;
 
                                         // ===== STATUS / AUTO =====
                                         case 'status': 

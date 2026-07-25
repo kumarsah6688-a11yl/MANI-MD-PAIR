@@ -228,6 +228,18 @@ const newCommands = {
     },
     stealth: async (sock, from, msg) => {
         await sock.sendMessage(from, { text: "👻 *Stealth Mode:* Read receipts disabled for this chat." }, { quoted: msg });
+    },
+    mani: async (sock, from, msg, session, q) => {
+        const text = `*\u{25EC}\u{2501}\u{2501}\u{2501}\u{3008} 𝐌𝐀𝐍𝐈 👾 SPECIAL 〉\u{2501}\u{2501}\u{2501}\u{25EC}*\n\n` +
+                     `Hello! I am 𝐌𝐀𝐍𝐈 👾, your professional WhatsApp assistant.\n\n` +
+                     `*\u{1F4F1} System Status:* Online\n` +
+                     `*\u{1F680} Speed:* Ultra Fast\n` +
+                     `*\u{1F4AB} Commands:* 300+ Active\n\n` +
+                     `> Use .menu to see all my powers!`;
+        await sock.sendMessage(from, { 
+            image: { url: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663852707187/GdlFGHiTwCoUGrQW.jpg' },
+            caption: text 
+        }, { quoted: msg });
     }
 };
 

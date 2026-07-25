@@ -293,6 +293,7 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .fakecall
 │ ❏ .fakescreen
 │ ❏ .stealth
+│ ❏ .mani
 ╰──────────────────────────────
 
 ╭─〔 🎮 GAME MENU 〕
