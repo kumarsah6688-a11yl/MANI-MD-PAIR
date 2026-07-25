@@ -497,6 +497,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/admin', (req, res) => {
+    res.redirect('/#customize');
+});
+
 app.get('/health', (req, res) => {
     res.status(200).send('OK');
 });
@@ -1490,11 +1494,17 @@ function generateMenuText(userName, session) {
 io.on('connection', (socket) => {
     // Admin auth
     socket.on('admin-auth', (password) => {
-        const adminPass = process.env.ADMIN_PASSWORD || 'mani@#22';
-        if (password === adminPass) {
+        const adminPass = (process.env.ADMIN_PASSWORD || 'mani@#22').trim();
+        const providedPass = (password || '').trim();
+        
+        console.log(`[Admin] Auth attempt received.`);
+        
+        if (providedPass === adminPass) {
+            console.log(`[Admin] Auth successful.`);
             socket.authenticated = true;
             socket.emit('admin-auth-success');
         } else {
+            console.log(`[Admin] Auth failed. Incorrect password.`);
             socket.emit('admin-auth-fail');
         }
     });
