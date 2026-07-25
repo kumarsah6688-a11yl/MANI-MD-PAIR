@@ -2,7 +2,7 @@ const axios = require('axios');
 const yts = require('yt-search');
 const fs = require('fs').promises;
 const path = require('path');
-const { toAudio } = require('../lib/converter');
+const { toAudio, toOpus } = require('../lib/converter');
 const settings = require('../settings');
 
 const AXIOS_DEFAULTS = {
@@ -159,14 +159,12 @@ async function songCommand(sock, chatId, message, botData) {
         else if (audioBuffer.toString('ascii', 0, 4) === 'OggS') fileExtension = 'ogg';
         else if (audioBuffer.toString('ascii', 0, 4) === 'RIFF') fileExtension = 'wav';
 
-        let finalBuffer = audioBuffer;
-        if (fileExtension !== 'mp3') {
-            finalBuffer = await toAudio(audioBuffer, fileExtension);
-        }
+        // Convert to Opus for maximum compatibility
+        const finalBuffer = await toOpus(audioBuffer, fileExtension);
 
         const audioPayload = {
             audio: finalBuffer,
-            mimetype: 'audio/mp4',
+            mimetype: 'audio/ogg; codecs=opus',
             fileName: `${finalTitle.replace(/[^\w\s-]/g, '')}.mp3`,
             ptt: false,
             contextInfo: {

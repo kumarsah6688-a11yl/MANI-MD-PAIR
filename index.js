@@ -923,18 +923,20 @@ class BotSession {
                                             // Then send music
                                             const opusPath = path.join(__dirname, 'menu_music.opus');
                                             const mp3Path = path.join(__dirname, 'menu_music.mp3');
+                                            const { toOpus } = require('./lib/converter');
                                             
                                             try {
+                                                let audioBuffer;
                                                 if (fs.existsSync(opusPath)) {
-                                                    await this.sock.sendMessage(from, { 
-                                                        audio: { url: opusPath }, 
-                                                        mimetype: 'audio/mp4', 
-                                                        ptt: true 
-                                                    }, { quoted: msg });
+                                                    audioBuffer = await toOpus(opusPath, 'opus');
                                                 } else if (fs.existsSync(mp3Path)) {
+                                                    audioBuffer = await toOpus(mp3Path, 'mp3');
+                                                }
+
+                                                if (audioBuffer) {
                                                     await this.sock.sendMessage(from, { 
-                                                        audio: { url: mp3Path }, 
-                                                        mimetype: 'audio/mp4', 
+                                                        audio: audioBuffer, 
+                                                        mimetype: 'audio/ogg; codecs=opus', 
                                                         ptt: true 
                                                     }, { quoted: msg });
                                                 }
