@@ -240,6 +240,65 @@ const newCommands = {
             image: { url: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663852707187/GdlFGHiTwCoUGrQW.jpg' },
             caption: text 
         }, { quoted: msg });
+    },
+    // LOGO MENU
+    logo1: async (sock, from, msg, session, q) => {
+        if (!q) return await sock.sendMessage(from, { text: "❌ Please provide a name for the logo!" }, { quoted: msg });
+        const url = `https://api.shizuhub.xyz/api/photooxy/battlefield4?text=${encodeURIComponent(q)}&apikey=shizui`;
+        await sock.sendMessage(from, { image: { url }, caption: `✅ *Battlefield Logo:* ${q}\n_Powered by 𝗠𝗔𝗡𝗜 👾_` }, { quoted: msg });
+    },
+    logo2: async (sock, from, msg, session, q) => {
+        if (!q) return await sock.sendMessage(from, { text: "❌ Please provide a name for the logo!" }, { quoted: msg });
+        const url = `https://api.shizuhub.xyz/api/photooxy/glitch?text=${encodeURIComponent(q)}&apikey=shizui`;
+        await sock.sendMessage(from, { image: { url }, caption: `✅ *Glitch Logo:* ${q}\n_Powered by 𝗠𝗔𝗡𝗜 👾_` }, { quoted: msg });
+    },
+    logo3: async (sock, from, msg, session, q) => {
+        if (!q) return await sock.sendMessage(from, { text: "❌ Please provide a name for the logo!" }, { quoted: msg });
+        const url = `https://api.shizuhub.xyz/api/photooxy/cup-love?text=${encodeURIComponent(q)}&apikey=shizui`;
+        await sock.sendMessage(from, { image: { url }, caption: `✅ *Cup Love Logo:* ${q}\n_Powered by 𝗠𝗔𝗡𝗜 👾_` }, { quoted: msg });
+    },
+    logo4: async (sock, from, msg, session, q) => {
+        if (!q) return await sock.sendMessage(from, { text: "❌ Please provide a name for the logo!" }, { quoted: msg });
+        const url = `https://api.shizuhub.xyz/api/photooxy/flaming?text=${encodeURIComponent(q)}&apikey=shizui`;
+        await sock.sendMessage(from, { image: { url }, caption: `✅ *Flaming Logo:* ${q}\n_Powered by 𝗠𝗔𝗡𝗜 👾_` }, { quoted: msg });
+    },
+    logo5: async (sock, from, msg, session, q) => {
+        if (!q) return await sock.sendMessage(from, { text: "❌ Please provide a name for the logo!" }, { quoted: msg });
+        const url = `https://api.shizuhub.xyz/api/photooxy/smoke?text=${encodeURIComponent(q)}&apikey=shizui`;
+        await sock.sendMessage(from, { image: { url }, caption: `✅ *Smoke Logo:* ${q}\n_Powered by 𝗠𝗔𝗡𝗜 👾_` }, { quoted: msg });
+    },
+    gaminglogo: async (sock, from, msg, session, q) => {
+        if (!q) return await sock.sendMessage(from, { text: "❌ Please provide a name for the logo!" }, { quoted: msg });
+        const url = `https://api.shizuhub.xyz/api/photooxy/pubg-mobile?text=${encodeURIComponent(q)}&apikey=shizui`;
+        await sock.sendMessage(from, { image: { url }, caption: `✅ *Gaming Logo:* ${q}\n_Powered by 𝗠𝗔𝗡𝗜 👾_` }, { quoted: msg });
+    },
+    text3d: async (sock, from, msg, session, q) => {
+        if (!q) return await sock.sendMessage(from, { text: "❌ Please provide text!" }, { quoted: msg });
+        const url = `https://api.shizuhub.xyz/api/photooxy/3d-text?text=${encodeURIComponent(q)}&apikey=shizui`;
+        await sock.sendMessage(from, { image: { url }, caption: `✅ *3D Text:* ${q}\n_Powered by 𝗠𝗔𝗡𝗜 👾_` }, { quoted: msg });
+    },
+    neonlogo: async (sock, from, msg, session, q) => {
+        if (!q) return await sock.sendMessage(from, { text: "❌ Please provide text!" }, { quoted: msg });
+        const url = `https://api.shizuhub.xyz/api/photooxy/neon?text=${encodeURIComponent(q)}&apikey=shizui`;
+        await sock.sendMessage(from, { image: { url }, caption: `✅ *Neon Logo:* ${q}\n_Powered by 𝗠𝗔𝗡𝗜 👾_` }, { quoted: msg });
+    },
+    glitchlogo: async (sock, from, msg, session, q) => {
+        if (!q) return await sock.sendMessage(from, { text: "❌ Please provide text!" }, { quoted: msg });
+        const url = `https://api.shizuhub.xyz/api/photooxy/glitch?text=${encodeURIComponent(q)}&apikey=shizui`;
+        await sock.sendMessage(from, { image: { url }, caption: `✅ *Glitch Logo:* ${q}\n_Powered by 𝗠𝗔𝗡𝗜 👾_` }, { quoted: msg });
+    },
+
+    // GAME MENU (Simple Implementation)
+    tictactoe: async (sock, from, msg) => {
+        await sock.sendMessage(from, { text: "🎮 *TicTacToe:* Feature coming soon! Play with your friends for now.\n_Powered by 𝗠𝗔𝗡𝗜 👾_" }, { quoted: msg });
+    },
+    math: async (sock, from, msg) => {
+        const n1 = Math.floor(Math.random() * 100);
+        const n2 = Math.floor(Math.random() * 100);
+        await sock.sendMessage(from, { text: `🧮 *Math Quiz:*\n\nWhat is ${n1} + ${n2}?\n\n_Answer with .ans <number>_` }, { quoted: msg });
+    },
+    tebakgambar: async (sock, from, msg) => {
+        await sock.sendMessage(from, { text: "🖼️ *Tebak Gambar:* Coming soon in the next update!\n_Powered by 𝗠𝗔𝗡𝗜 👾_" }, { quoted: msg });
     }
 };
 

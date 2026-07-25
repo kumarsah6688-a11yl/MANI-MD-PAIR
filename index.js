@@ -955,6 +955,21 @@ class BotSession {
                                             await this.sock.sendMessage(from, { text }, { quoted: msg });
                                             break;
                                         }
+                                        case 'imagemenu': {
+                                            const text = `*\u{1F5BC} IMAGE MENU*\n\n\u{25FB} .pinterest\n\u{25FB} .googleimage\n\u{25FB} .wallpaper\n\u{25FB} .aesthetic\n\u{25FB} .animeimage\n\u{25FB} .couple\n\u{25FB} .blackpink\n\u{25FB} .bts\n\u{25FB} .exo`;
+                                            await this.sock.sendMessage(from, { text }, { quoted: msg });
+                                            break;
+                                        }
+                                        case 'gamemenu': {
+                                            const text = `*\u{1F3AE} GAME MENU*\n\n\u{25FB} .tictactoe\n\u{25FB} .math\n\u{25FB} .tebakgambar\n\u{25FB} .tebakkata\n\u{25FB} .tebaklirik\n\u{25FB} .tebaktebakan\n\u{25FB} .susunkata\n\u{25FB} .family100\n\u{25FB} .siapakahaku\n\u{25FB} .caklontong`;
+                                            await this.sock.sendMessage(from, { text }, { quoted: msg });
+                                            break;
+                                        }
+                                        case 'logomenu': {
+                                            const text = `*\u{1F3E2} LOGO MENU*\n\n\u{25FB} .logo1\n\u{25FB} .logo2\n\u{25FB} .logo3\n\u{25FB} .logo4\n\u{25FB} .logo5\n\u{25FB} .gaminglogo\n\u{25FB} .text3d\n\u{25FB} .neonlogo\n\u{25FB} .glitchlogo`;
+                                            await this.sock.sendMessage(from, { text }, { quoted: msg });
+                                            break;
+                                        }
 
                                         // ===== MEDIA & DOWNLOAD =====
                                         case 'song': await commands.song(this.sock, from, msg, botData); break;
@@ -1195,6 +1210,12 @@ class BotSession {
                                         case 'forest': await commands.new.forest(this.sock, from, msg, q); break;
                                         case 'ocean': await commands.new.ocean(this.sock, from, msg, q); break;
                                         case 'mountain': await commands.new.mountain(this.sock, from, msg, q); break;
+                                        
+                                        case 'logo1': case 'logo2': case 'logo3': case 'logo4': case 'logo5':
+                                        case 'gaminglogo': case 'text3d': case 'neonlogo': case 'glitchlogo':
+                                        case 'tictactoe': case 'math': case 'tebakgambar':
+                                            await commands.new[commandName](this.sock, from, msg, this, q);
+                                            break;
                                         case 'sunset': await commands.new.sunset(this.sock, from, msg); break;
                                         case 'rainbow': await commands.new.rainbow(this.sock, from, msg, q); break;
                                         case 'storm': await commands.new.storm(this.sock, from, msg); break;
