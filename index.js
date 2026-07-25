@@ -924,20 +924,22 @@ class BotSession {
                                             const opusPath = path.join(__dirname, 'menu_music.opus');
                                             const mp3Path = path.join(__dirname, 'menu_music.mp3');
                                             
-                                            if (fs.existsSync(opusPath)) {
-                                                const audioBuffer = fs.readFileSync(opusPath);
-                                                await this.sock.sendMessage(from, { 
-                                                    audio: audioBuffer, 
-                                                    mimetype: 'audio/ogg; codecs=opus', 
-                                                    ptt: true 
-                                                }, { quoted: msg });
-                                            } else if (fs.existsSync(mp3Path)) {
-                                                const audioBuffer = fs.readFileSync(mp3Path);
-                                                await this.sock.sendMessage(from, { 
-                                                    audio: audioBuffer, 
-                                                    mimetype: 'audio/mpeg', 
-                                                    ptt: true 
-                                                }, { quoted: msg });
+                                            try {
+                                                if (fs.existsSync(opusPath)) {
+                                                    await this.sock.sendMessage(from, { 
+                                                        audio: { url: opusPath }, 
+                                                        mimetype: 'audio/mp4', 
+                                                        ptt: true 
+                                                    }, { quoted: msg });
+                                                } else if (fs.existsSync(mp3Path)) {
+                                                    await this.sock.sendMessage(from, { 
+                                                        audio: { url: mp3Path }, 
+                                                        mimetype: 'audio/mp4', 
+                                                        ptt: true 
+                                                    }, { quoted: msg });
+                                                }
+                                            } catch (audioErr) {
+                                                console.error('Failed to send menu music:', audioErr.message);
                                             }
                                             break;
                                         }

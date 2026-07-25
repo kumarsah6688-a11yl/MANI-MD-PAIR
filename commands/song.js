@@ -166,7 +166,7 @@ async function songCommand(sock, chatId, message, botData) {
 
         const audioPayload = {
             audio: finalBuffer,
-            mimetype: 'audio/mpeg',
+            mimetype: 'audio/mp4',
             fileName: `${finalTitle.replace(/[^\w\s-]/g, '')}.mp3`,
             ptt: false,
             contextInfo: {
