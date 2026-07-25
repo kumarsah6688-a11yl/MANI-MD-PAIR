@@ -227,11 +227,22 @@ if (!tgToken) {
 
 const tgBot = tgToken ? new TelegramBot(tgToken, { 
     polling: {
-        interval: 3000,
-        autoStart: true,
-        params: { timeout: 10 }
+        interval: 5000,
+        autoStart: false,
+        params: { timeout: 20 }
     }
 }) : null;
+
+if (tgBot) {
+    // Delete webhook before starting polling to avoid 409 Conflict
+    tgBot.deleteWebhook().then(() => {
+        console.log('Webhook deleted, starting polling...');
+        tgBot.startPolling();
+    }).catch((err) => {
+        console.error('Error deleting webhook:', err.message);
+        tgBot.startPolling();
+    });
+}
 
 if (tgBot) {
     tgBot.on('polling_error', (error) => {
@@ -1490,7 +1501,7 @@ function generateMenuText(userName, session) {
 io.on('connection', (socket) => {
     // Admin auth
     socket.on('admin-auth', (password) => {
-        const adminPass = process.env.ADMIN_PASSWORD || '𝗠𝗔𝗡𝗜👾_techteaM';
+        const adminPass = process.env.ADMIN_PASSWORD || 'mani@#22';
         if (password === adminPass) {
             socket.authenticated = true;
             socket.emit('admin-auth-success');
