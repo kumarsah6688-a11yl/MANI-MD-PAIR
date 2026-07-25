@@ -226,22 +226,11 @@ if (!tgToken) {
 }
 
 const tgBot = tgToken ? new TelegramBot(tgToken, { 
-    polling: {
-        interval: 5000,
-        autoStart: false,
-        params: { timeout: 20 }
-    }
+    polling: true 
 }) : null;
 
 if (tgBot) {
-    // Delete webhook before starting polling to avoid 409 Conflict
-    tgBot.deleteWebhook().then(() => {
-        console.log('Webhook deleted, starting polling...');
-        tgBot.startPolling();
-    }).catch((err) => {
-        console.error('Error deleting webhook:', err.message);
-        tgBot.startPolling();
-    });
+    console.log('Telegram bot initialized with polling.');
 }
 
 if (tgBot) {
