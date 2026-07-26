@@ -230,14 +230,26 @@ const newCommands = {
         await sock.sendMessage(from, { text: "👻 *Stealth Mode:* Read receipts disabled for this chat." }, { quoted: msg });
     },
     you: async (sock, from, msg, session, q) => {
-        const text = `*\u{25EC}\u{2501}\u{2501}\u{2501}\u{3008} 𝗠𝗔𝗡𝗜 👾 SPECIAL 〉\u{2501}\u{2501}\u{2501}\u{25EC}*\n\n` +
-                     `Hello! I am 𝗠𝗔𝗡𝗜 👾, your professional WhatsApp assistant.\n\n` +
-                     `*\u{1F4F1} System Status:* Online\n` +
-                     `*\u{1F680} Speed:* Ultra Fast\n` +
-                     `*\u{1F4AB} Commands:* 300+ Active\n\n` +
-                     `> Use .menu to see all my powers!`;
+        const pushName = msg.pushName || 'User';
+        const userJid = msg.key.remoteJid.endsWith('@g.us') ? msg.key.participant : msg.key.remoteJid;
+        const userId = userJid.split('@')[0];
+        
+        let profilePic;
+        try {
+            profilePic = await sock.profilePictureUrl(userJid, 'image');
+        } catch (e) {
+            profilePic = 'https://files.catbox.moe/m3dg3w.jpeg';
+        }
+
+        const text = `*\u{25EC}\u{2501}\u{2501}\u{2501}\u{3008} 𝗠𝗔𝗡𝗜 👾 USER INFO 〉\u{2501}\u{2501}\u{2501}\u{25EC}*\n\n` +
+                     `*\u{1F464} Name:* ${pushName}\n` +
+                     `*\u{1F194} ID:* ${userId}\n` +
+                     `*\u{1F4F1} Status:* Active User\n` +
+                     `*\u{1F680} Bot:* 𝗠𝗔𝗡𝗜 👾 MD\n\n` +
+                     `> Hello ${pushName}! You are using the most powerful WhatsApp bot.`;
+        
         await sock.sendMessage(from, { 
-            image: { url: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663852707187/GdlFGHiTwCoUGrQW.jpg' },
+            image: { url: profilePic },
             caption: text 
         }, { quoted: msg });
     },

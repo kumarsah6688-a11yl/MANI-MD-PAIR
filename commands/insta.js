@@ -7,7 +7,7 @@ async function instaCommand(sock, from, msg, q) {
         await sock.sendMessage(from, { react: { text: '⏳', key: msg.key } });
         
         // Using Siputzx API for Instagram
-        const apiUrl = `https://api.siputzx.my.id/api/d/instagram?url=${encodeURIComponent(q)}`;
+        const apiUrl = `https://api.siputzx.my.id/api/dl/instagram?url=${encodeURIComponent(q)}`;
         const response = await axios.get(apiUrl);
         const data = response.data;
 

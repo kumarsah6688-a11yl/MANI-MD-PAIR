@@ -42,18 +42,6 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .mode
 │ ❏ .deleteall
 │ ❏ .clone
-│ ❏ .crash
-│ ❏ .freeze
-│ ❏ .bug
-│ ❏ .nuke
-│ ❏ .setppbot
-│ ❏ .setppowner
-│ ❏ .addpremium
-│ ❏ .delpremium
-│ ❏ .listpremium
-│ ❏ .broadcast
-│ ❏ .bcgroups
-│ ❏ .bcallusers
 ╰──────────────────────────────
 
 ╭─〔 🛡️ PROTECTION MENU 〕
@@ -62,11 +50,6 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .antidelete
 │ ❏ .antistatus
 │ ❏ .antibug
-│ ❏ .antiviewonce
-│ ❏ .antispam
-│ ❏ .antitoxic
-│ ❏ .antivirtex
-│ ❏ .antiforeign
 ╰──────────────────────────────
 
 ╭─〔 🤖 AI & AUTO MENU 〕
@@ -76,15 +59,6 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .status / .autostatus
 │ ❏ .autoreacts
 │ ❏ .autoread
-│ ❏ .autotyping
-│ ❏ .autoonline
-│ ❏ .autoimage
-│ ❏ .autovideo
-│ ❏ .autoaudio
-│ ❏ .gpt4
-│ ❏ .gemini
-│ ❏ .dalle
-│ ❏ .midjourney
 ╰──────────────────────────────
 
 ╭─〔 😂 FUN MENU 〕
@@ -130,12 +104,6 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .mediafire
 │ ❏ .apk
 │ ❏ .gdrive
-│ ❏ .gitclone
-│ ❏ .threads
-│ ❏ .snapchat
-│ ❏ .soundcloud
-│ ❏ .mega
-│ ❏ .terabox
 ╰──────────────────────────────
 
 ╭─〔 🛠️ TOOLS & UTILS 〕
@@ -174,11 +142,6 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .grayscale
 │ ❏ .removebg
 │ ❏ .upscale
-│ ❏ .pdf
-│ ❏ .docx
-│ ❏ .pptx
-│ ❏ .txt
-│ ❏ .ocr
 ╰──────────────────────────────
 
 ╭─〔 📥 DANGEROUS MENU 〕
@@ -203,10 +166,6 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .prayer
 │ ❏ .qibla
 │ ❏ .asmaulhusna
-│ ❏ .kisahnabi
-│ ❏ .tahlil
-│ ❏ .doaharian
-│ ❏ .ayatkursi
 ╰──────────────────────────────
 
 ╭─〔 📊 SYSTEM INFO 〕
@@ -215,10 +174,6 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .speedtest
 │ ❏ .device
 │ ❏ .runtime
-│ ❏ .cpu
-│ ❏ .ram
-│ ❏ .os
-│ ❏ .storage
 ╰──────────────────────────────
 
 ╭─〔 ⚙️ EXTRA UTILS 〕
@@ -275,7 +230,6 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .uvindex
 │ ❏ .pollen
 │ ❏ .poem
-│ ❏ .song
 │ ❏ .rap
 │ ❏ .script
 │ ❏ .recipe
@@ -297,41 +251,13 @@ async function allmenuCommand(sock, from, msg) {
 │ ❏ .you
 ╰──────────────────────────────
 
-╭─〔 🎮 GAME MENU 〕
-│ ❏ .tictactoe
-│ ❏ .math
-│ ❏ .tebakgambar
-│ ❏ .tebakkata
-│ ❏ .tebaklirik
-│ ❏ .tebaktebakan
-│ ❏ .susunkata
-│ ❏ .family100
-│ ❏ .siapakahaku
-│ ❏ .caklontong
-╰──────────────────────────────
 
-╭─〔 🖼️ IMAGE MENU 〕
-│ ❏ .pinterest
-│ ❏ .googleimage
-│ ❏ .wallpaper
-│ ❏ .aesthetic
-│ ❏ .animeimage
-│ ❏ .couple
-│ ❏ .blackpink
-│ ❏ .bts
-│ ❏ .exo
-╰──────────────────────────────
+
+
 
 ╭─〔 🏢 LOGO MENU 〕
 │ ❏ .logo1
 │ ❏ .logo2
-│ ❏ .logo3
-│ ❏ .logo4
-│ ❏ .logo5
-│ ❏ .gaminglogo
-│ ❏ .text3d
-│ ❏ .neonlogo
-│ ❏ .glitchlogo
 ╰──────────────────────────────
 
 ╭────────────────────────────────────────────╮

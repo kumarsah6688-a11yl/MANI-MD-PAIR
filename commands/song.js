@@ -106,6 +106,11 @@ async function songCommand(sock, chatId, message, botData) {
         let finalTitle = video.title;
         
         const apiMethods = [
+            { name: 'Siputzx', method: async () => {
+                const res = await axios.get(`https://api.siputzx.my.id/api/dl/ytmp3?url=${encodeURIComponent(video.url)}`, AXIOS_DEFAULTS);
+                if (res.data.status && res.data.data.dl) return { download: res.data.data.dl, title: res.data.data.title };
+                throw new Error('Siputzx failed');
+            }},
             { name: 'EliteProTech', method: () => getEliteProTechDownloadByUrl(video.url) },
             { name: 'Yupra', method: () => getYupraDownloadByUrl(video.url) },
             { name: 'Okatsu', method: () => getOkatsuDownloadByUrl(video.url) },
