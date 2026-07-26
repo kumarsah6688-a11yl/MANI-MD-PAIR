@@ -10,5 +10,6 @@ module.exports = {
     premiumUsers: [],
     connectedBots: [],
     version: '3.0.0',
-    prefix: '.'
+    prefix: '.',
+    menuMusic: 'menu_music.mp3'
 };
